@@ -27,6 +27,8 @@ public class patrol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (infoScript.foundPlayer) { return;  }
+
         if (setPosition) {
             setPosition = false;
             NavMesh.SamplePosition(transform.position, out var hit, 30, NavMesh.AllAreas);
@@ -41,15 +43,17 @@ public class patrol : MonoBehaviour
         if (Vector3.Distance(transform.position, patrolPoints[index]) < 1f) {
             index += 1;
             if (index >= patrolPoints.Count) { index = 0; }
-            print("reached destination");
         }
     }
 
     private void OnDrawGizmosSelected() {
         for (int i = 0; i < patrolPoints.Count; i++) {
             Gizmos.DrawSphere(patrolPoints[i], 0.1f);
-            if (i < patrolPoints.Count + 1) {
+            if (i < patrolPoints.Count - 1) {
                 Gizmos.DrawLine(patrolPoints[i], patrolPoints[i + 1]);
+            }
+            else {
+                Gizmos.DrawLine(patrolPoints[i], patrolPoints[0]);
             }
         }
     }

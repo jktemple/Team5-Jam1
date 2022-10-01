@@ -17,6 +17,7 @@ public class Door : MonoBehaviour
     private bool opening;
     private bool closing;
     bool closed = true;
+    float closeTimer = 0;
 
     void Start()
     {
@@ -26,6 +27,14 @@ public class Door : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!closed) {
+            closeTimer -= Time.deltaTime;
+            if (closeTimer <= 0) {
+                Close();
+            }
+        }
+        
+
         if (opening) {
             transform.position = Vector3.Lerp(transform.position, openPos, 0.025f);
             if (Vector3.Distance(transform.position, openPos) <= 0.01f) {
@@ -58,26 +67,20 @@ public class Door : MonoBehaviour
     }
 
     void Close() {
-        closing = false;
+        closing = true;
     }
 
     private void OnTriggerExit(Collider other) {
-        if (controllerLayers.Contains(other.gameObject.layer)) {
-            if (closed) {
-                //Close();
-            }
+        print("left: " + other.gameObject.name);
+        if (controllerLayers.Contains(other.gameObject.layer) && !closed) {
+            Close();
         }
     }
 
     private void OnTriggerEnter(Collider other) {
-        print("hi");
-        print("layer: " + other.gameObject.layer);
-    }
-
-    private void OnTriggerStay(Collider other) {
-        if (controllerLayers.Contains(other.gameObject.layer)) {
+        if (controllerLayers.Contains(other.gameObject.layer) && closed) {
             Open();
+            closeTimer = 2;
         }
     }
-
 }
