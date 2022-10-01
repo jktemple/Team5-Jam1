@@ -79,8 +79,10 @@ public class EntityInfo : MonoBehaviour
         //raycast to player, if uninturrupted and at the correct angle and distance, player has been spotted.
         Physics.Raycast(transform.position, player.transform.position - transform.position, out var hit);
         float angleToPlayer = Vector3.Angle(player.transform.position - transform.position, transform.forward);
+        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+        print("angle: " + angleToPlayer + ", distance: " + distanceToPlayer);
 
-        if (hit.collider.gameObject == player && angleToPlayer <= VisiblityConeAngle && Vector3.Distance(transform.position, player.transform.position) <= maxVisibilityDistance) {
+        if (hit.collider.gameObject == player && angleToPlayer <= VisiblityConeAngle && distanceToPlayer <= maxVisibilityDistance) {
             timeSeen += Time.deltaTime;
 
             if (timeSeen > Time.deltaTime * 2) {
@@ -128,12 +130,12 @@ public class EntityInfo : MonoBehaviour
 
     //called to return guard to normal behavior. without certain components, it's called automatically after suspicionTime seconds. if those components are present, it's instead called from those scripts. example: stealthInevestigate.cs
     public void EndSuspicion(bool calledFromComponent = false) {
+        StealthGameManager.instance.susGaurds.Remove(gameObject);
         if (!suspicious || (!calledFromComponent && investigateComponent != null)) {
             return;
         }
         suspicious = false;
         susCoutner = suspicionTime;
-        StealthGameManager.instance.susGaurds.Remove(gameObject);
     }
 
     private void OnDrawGizmos() {

@@ -38,9 +38,10 @@ public class StealthGameManager : MonoBehaviour
         }
         else {
             RedOverlay.SetActive(false);
+            YellowOverlay.SetActive(false);
         }
 
-        if (susGaurds.Count > 0) {
+        if (susGaurds.Count > 0 && !RedOverlay.activeInHierarchy) {
             YellowOverlay.SetActive(true);
         }
         else {

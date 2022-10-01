@@ -9,6 +9,9 @@ public class StealthPlayerController : MonoBehaviour
     public bool crouching = false;
     public bool hiding = false;
 
+    public MeshRenderer crouchingVersion;
+    MeshRenderer normalVersion;
+
     float horizontal;
     float vertical;
 
@@ -18,21 +21,21 @@ public class StealthPlayerController : MonoBehaviour
 
     void Start()
     {
-        
+        normalVersion = GetComponent<MeshRenderer>();
     }
 
     // Update is called once per frame
     void Update() {
+        normalVersion.enabled = !crouching;
+        crouchingVersion.enabled = crouching;
 
         if (hiding) {
             return;
         }
         if (Input.GetKey(StealthGameManager.instance.SneakKey) && !crouching) {
             crouching = true;
-            transform.position = new Vector3(transform.position.x, 0, transform.position.z);
         }
         else if (Input.GetKeyUp(StealthGameManager.instance.SneakKey) && crouching) {
-            transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
             crouching = false;
         }
 

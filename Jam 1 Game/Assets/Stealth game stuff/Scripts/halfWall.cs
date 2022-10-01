@@ -4,20 +4,24 @@ using UnityEngine;
 
 public class halfWall : MonoBehaviour
 {
-    BoxCollider collider;
+    public BoxCollider fullCollider;
+    bool nearby;
 
-    private void Start() {
-        collider = GetComponent<BoxCollider>();
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if (StealthGameManager.instance.player.crouching) {
-            collider.enabled = true;
+        if (StealthGameManager.instance.player.crouching && nearby) {
+            fullCollider.enabled = true;
         }
         else {
-            collider.enabled = false;
+            fullCollider.enabled = false;
         }
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.gameObject == StealthGameManager.instance.player.gameObject) { nearby = true; }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if (other.gameObject == StealthGameManager.instance.player.gameObject) { nearby = false; }
     }
 }
