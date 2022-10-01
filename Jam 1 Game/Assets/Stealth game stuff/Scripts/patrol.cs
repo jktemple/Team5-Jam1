@@ -27,7 +27,13 @@ public class patrol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (infoScript.foundPlayer) { return;  }
+        if (infoScript.foundPlayer) {
+            return;
+        }
+        else if (infoScript.suspicious) {
+            navAgent.SetDestination(transform.position);
+            return;
+        }
 
         if (setPosition) {
             setPosition = false;

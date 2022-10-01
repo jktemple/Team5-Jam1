@@ -7,6 +7,7 @@ public class StealthPlayerController : MonoBehaviour
     public float speed;
     Rigidbody rb;
     public bool crouching = false;
+    public bool hiding = false;
 
     float horizontal;
     float vertical;
@@ -21,13 +22,16 @@ public class StealthPlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.LeftShift) && !crouching) {
+    void Update() {
+
+        if (hiding) {
+            return;
+        }
+        if (Input.GetKey(StealthGameManager.instance.SneakKey) && !crouching) {
             crouching = true;
             transform.position = new Vector3(transform.position.x, 0, transform.position.z);
         }
-        else if (Input.GetKeyUp(KeyCode.LeftShift) && crouching) {
+        else if (Input.GetKeyUp(StealthGameManager.instance.SneakKey) && crouching) {
             transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
             crouching = false;
         }
@@ -42,36 +46,15 @@ public class StealthPlayerController : MonoBehaviour
     }
 
 
-    /*
-    
-    if (Input.GetKey(KeyCode.W)) {
-            rb.AddForce(Vector3.forward * speed * Time.deltaTime, ForceMode.Force);
-            //rb.velocity += Vector3.forward * speed;
-        }
-        if (Input.GetKey(KeyCode.S)) {
-            rb.AddForce(Vector3.back * speed * Time.deltaTime, ForceMode.Force);
-        }
-        if (Input.GetKey(KeyCode.A)) {
-            rb.AddForce(Vector3.left * speed * Time.deltaTime, ForceMode.Force);
-        }
-        if (Input.GetKey(KeyCode.D)) {
-            rb.AddForce(Vector3.right * speed * Time.deltaTime, ForceMode.Force);
-        }
-    
-    if (Input.GetKey(KeyCode.W) && rb.velocity.z <= speed) {
-            rb.velocity += Vector3.forward * speed;
-        }
-        if (Input.GetKey(KeyCode.S) && rb.velocity.z >= -speed) {
-            rb.velocity += Vector3.back * speed;
-        }
-        if (Input.GetKey(KeyCode.A) && rb.velocity.x >= -speed) {
-            rb.velocity += Vector3.left * speed;
-        }
-        if (Input.GetKey(KeyCode.D) && rb.velocity.x <= speed) {
-            rb.velocity += Vector3.right * speed;
-        } 
-     
-     * 
-     
-     */
+    public void Hide() {
+        hiding = true;
+        rb.constraints = RigidbodyConstraints.FreezeAll;
+        GetComponent<BoxCollider>().enabled = false;
+    }
+
+    public void UnHide() {
+        hiding = false;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        GetComponent<BoxCollider>().enabled = true;
+    }
 }
