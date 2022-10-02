@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class patrol : MonoBehaviour
 {
     public bool stopWhenFound = true;
-    private EntityInfo infoScript;
+    private StealthGaurdInfo infoScript;
 
     public bool setPosition;
     public List<Vector3> patrolPoints;
@@ -18,7 +18,7 @@ public class patrol : MonoBehaviour
 
     void Start()
     {
-        infoScript = GetComponent<EntityInfo>();
+        infoScript = GetComponent<StealthGaurdInfo>();
         if (infoScript.navAgent != null) {
             navAgent = infoScript.navAgent;
         }

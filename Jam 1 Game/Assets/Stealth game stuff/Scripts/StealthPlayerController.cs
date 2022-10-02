@@ -8,9 +8,15 @@ public class StealthPlayerController : MonoBehaviour
     Rigidbody rb;
     public bool crouching = false;
     public bool hiding = false;
-
     public MeshRenderer crouchingVersion;
     MeshRenderer normalVersion;
+
+    [Header("stone throwing")]
+    public LineRenderer aimLine;
+    public bool canThrowStones = true;
+    bool aiming = false;
+    public GameObject stone;
+    public float forceMod = 2;
 
     float horizontal;
     float vertical;
@@ -21,6 +27,7 @@ public class StealthPlayerController : MonoBehaviour
 
     void Start()
     {
+        aimLine.enabled = false;
         normalVersion = GetComponent<MeshRenderer>();
     }
 
@@ -41,6 +48,41 @@ public class StealthPlayerController : MonoBehaviour
 
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
+
+        if (canThrowStones) {
+            aimLine.enabled = aiming;
+
+            if (Input.GetMouseButtonDown(0)) {
+                aiming = true;
+                aimLine.SetPosition(1, transform.position);
+            }
+            if (Input.GetMouseButton(0) && aiming) {  
+                AimThrow();
+            }
+            if (Input.GetMouseButtonDown(1)) {
+                aiming = false;
+            }
+            if (Input.GetMouseButtonUp(0)) {
+                Throw();
+            }
+        }
+    }
+
+    void AimThrow() {
+        aimLine.enabled = true;
+        Ray mousePosRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Vector3 lineEnd = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        lineEnd.y = transform.position.y;
+        Physics.Raycast(mousePosRay, out var hit);
+        aimLine.SetPosition(0, transform.position);
+        aimLine.SetPosition(1, Vector3.Lerp(aimLine.GetPosition(1), hit.point, 0.025f));
+    }
+
+    void Throw() {
+        GameObject newPebble = Instantiate(stone, transform.position, Quaternion.identity);
+        Rigidbody Stonerb = newPebble.GetComponent<Rigidbody>();
+        Stonerb.AddForce( (aimLine.GetPosition(0) - aimLine.GetPosition(1)) * forceMod, ForceMode.VelocityChange);
+        aiming = false;
     }
 
     private void FixedUpdate() {

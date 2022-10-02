@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class StealthInvestigate : MonoBehaviour
 {
     public Vector3 pointOfInterest;
-    EntityInfo info;
+    StealthGaurdInfo info;
     [Tooltip("the amount of time this entity will wait at the point of interested before returning to normal behaviour")]
     public float investigateTime = 3;
     float investigateCounter;
@@ -16,7 +16,7 @@ public class StealthInvestigate : MonoBehaviour
         NavMesh.SamplePosition(pointOfInterest, out var hit, 30, NavMesh.AllAreas);
         pointOfInterest = hit.position;
 
-        info = GetComponent<EntityInfo>();
+        info = GetComponent<StealthGaurdInfo>();
         Reset();
     }
 

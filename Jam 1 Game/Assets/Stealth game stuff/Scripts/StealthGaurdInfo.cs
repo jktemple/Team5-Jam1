@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EntityInfo : MonoBehaviour
+public class StealthGaurdInfo : MonoBehaviour
 {
     public bool foundPlayer = false;
     public bool suspicious = false;
@@ -80,7 +80,6 @@ public class EntityInfo : MonoBehaviour
         Physics.Raycast(transform.position, player.transform.position - transform.position, out var hit);
         float angleToPlayer = Vector3.Angle(player.transform.position - transform.position, transform.forward);
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-        print("angle: " + angleToPlayer + ", distance: " + distanceToPlayer);
 
         if (hit.collider.gameObject == player && angleToPlayer <= VisiblityConeAngle && distanceToPlayer <= maxVisibilityDistance) {
             timeSeen += Time.deltaTime;
@@ -115,7 +114,7 @@ public class EntityInfo : MonoBehaviour
         foundPlayer = true;
     }
 
-    void BecomeSuspicious(Vector3 pointOfInterest) {
+    public void BecomeSuspicious(Vector3 pointOfInterest) {
         if (foundPlayer) { return;  }
 
         if (!StealthGameManager.instance.susGaurds.Contains(gameObject)) { StealthGameManager.instance.susGaurds.Add(gameObject); }

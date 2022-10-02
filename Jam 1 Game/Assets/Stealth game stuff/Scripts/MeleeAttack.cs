@@ -5,11 +5,11 @@ using UnityEngine.AI;
 
 public class MeleeAttack : MonoBehaviour
 {
-    EntityInfo info;
+    StealthGaurdInfo info;
     
     void Start()
     {
-        info = GetComponent<EntityInfo>();
+        info = GetComponent<StealthGaurdInfo>();
     }
 
     void Update()
