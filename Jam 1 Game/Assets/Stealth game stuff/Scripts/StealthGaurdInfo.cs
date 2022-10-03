@@ -21,6 +21,12 @@ public class StealthGaurdInfo : MonoBehaviour
     public float suspicionTime = 2;
     float susCoutner;
 
+    [Header("Pumbob")]
+    public GameObject plumbob;
+    public Material red;
+    public Material yellow;
+    public Material white;
+
     float timeSeen = 0;
     float timesuspicious = 0;
 
@@ -106,8 +112,8 @@ public class StealthGaurdInfo : MonoBehaviour
     }
 
     void Alert() {
-
         EndSuspicion();
+        plumbob.GetComponent<MeshRenderer>().material = red;
         if (!StealthGameManager.instance.alertedGaurds.Contains(gameObject)) {
             StealthGameManager.instance.alertedGaurds.Add(gameObject);
         }
@@ -117,7 +123,8 @@ public class StealthGaurdInfo : MonoBehaviour
     public void BecomeSuspicious(Vector3 pointOfInterest) {
         if (foundPlayer) { return;  }
 
-        if (!StealthGameManager.instance.susGaurds.Contains(gameObject)) { StealthGameManager.instance.susGaurds.Add(gameObject); }
+        //if (!StealthGameManager.instance.susGaurds.Contains(gameObject)) { StealthGameManager.instance.susGaurds.Add(gameObject); }
+        plumbob.GetComponent<MeshRenderer>().material = yellow;
         suspicious = true;
 
         //optional component behavior
@@ -133,6 +140,7 @@ public class StealthGaurdInfo : MonoBehaviour
         if (!suspicious || (!calledFromComponent && investigateComponent != null)) {
             return;
         }
+        plumbob.GetComponent<MeshRenderer>().material = white;
         suspicious = false;
         susCoutner = suspicionTime;
     }

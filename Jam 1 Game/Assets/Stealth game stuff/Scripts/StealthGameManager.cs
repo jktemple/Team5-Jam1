@@ -57,6 +57,7 @@ public class StealthGameManager : MonoBehaviour
         color = (color == null) ? Color.white : color;
         currentTextSource = source;
         bottomText.text = text;
+        bottomText.color = (Color) color;
     }
 
     public void HideText(GameObject source) {
