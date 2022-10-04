@@ -145,7 +145,7 @@ public class StealthGaurdInfo : MonoBehaviour
         susCoutner = suspicionTime;
     }
 
-    private void OnDrawGizmos() {
+    private void OnDrawGizmosSelected() {
         Debug.DrawRay(transform.position, FindObjectOfType<StealthPlayerController>().transform.position - transform.position);
         Debug.DrawRay(transform.position, transform.forward);
         Gizmos.DrawWireSphere(transform.position, maxVisibilityDistance);

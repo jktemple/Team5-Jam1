@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class StealthCameraController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public Vector2 yLimits;
+
+    GameObject player;
+
+    private void Start() {
+        player = StealthGameManager.instance.player.gameObject;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        float playerY = player.transform.position.y;
+        float targetY = playerY > yLimits.y ? yLimits.y : playerY;
         transform.position = Vector3.Lerp(transform.position, new Vector3(StealthGameManager.instance.player.transform.position.x, transform.position.y, transform.position.z), 0.025f);
     }
 }
