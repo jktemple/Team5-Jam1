@@ -210,10 +210,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   fireSpeed: 0.25
-  sheilds: 50
+  startingSheilds: 50
+  shields: 50
+  shieldDecay: 20
+  shieldCooldownTimer: 5
   health: 100
   bullet: {fileID: 2731637376480824453, guid: 358df8789b1f57847a6214572fae948a, type: 3}
   sheildSprite: {fileID: 1662165605}
+  cooldownTimer: 0
 --- !u!50 &147748168
 Rigidbody2D:
   serializedVersion: 4
