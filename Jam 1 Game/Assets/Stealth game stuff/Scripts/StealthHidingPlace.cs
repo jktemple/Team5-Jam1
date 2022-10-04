@@ -16,6 +16,7 @@ public class StealthHidingPlace : MonoBehaviour
         if (interactable) {
             if (Input.GetKeyDown(StealthGameManager.instance.interactKey)) {
                 if (!StealthGameManager.instance.player.hiding) {
+                    StealthGameManager.instance.playerHiding = true;
                     collision.enabled = false;
                     ExitPos = StealthGameManager.instance.player.transform.position;
                     StealthGameManager.instance.player.Hide();
@@ -23,6 +24,7 @@ public class StealthHidingPlace : MonoBehaviour
                     StealthGameManager.instance.DisplayText(exitText, gameObject);
                 }
                 else {
+                    StealthGameManager.instance.playerHiding = false;
                     StealthGameManager.instance.player.UnHide();
                     StealthGameManager.instance.player.transform.position = ExitPos;
                     collision.enabled = true;

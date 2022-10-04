@@ -10,6 +10,7 @@ public class StealthGaurdInfo : MonoBehaviour
     public bool targetPlayer = true;
 
     [Header("alert settings")]
+    public float eyeLevelOffset = 0.2f;
     public float VisiblityConeAngle = 45;
     public float maxVisibilityDistance = 30;
     [Tooltip("how many seconds must the player be visible before this enemey has 'found' the player, alerting other guards and attacking")]
@@ -83,7 +84,7 @@ public class StealthGaurdInfo : MonoBehaviour
         }
 
         //raycast to player, if uninturrupted and at the correct angle and distance, player has been spotted.
-        Physics.Raycast(transform.position, player.transform.position - transform.position, out var hit);
+        Physics.Raycast(transform.position + new Vector3(0, eyeLevelOffset, 0), player.transform.position - transform.position, out var hit);
         float angleToPlayer = Vector3.Angle(player.transform.position - transform.position, transform.forward);
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
@@ -146,7 +147,7 @@ public class StealthGaurdInfo : MonoBehaviour
     }
 
     private void OnDrawGizmosSelected() {
-        Debug.DrawRay(transform.position, FindObjectOfType<StealthPlayerController>().transform.position - transform.position);
+        Debug.DrawRay(transform.position + new Vector3(0, eyeLevelOffset, 0), FindObjectOfType<StealthPlayerController>().transform.position - transform.position);
         Debug.DrawRay(transform.position, transform.forward);
         Gizmos.DrawWireSphere(transform.position, maxVisibilityDistance);
     }

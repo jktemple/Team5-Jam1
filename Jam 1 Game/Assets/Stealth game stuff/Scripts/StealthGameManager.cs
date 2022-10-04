@@ -13,6 +13,7 @@ public class StealthGameManager : MonoBehaviour
     public List<GameObject> alertedGaurds = new List<GameObject>();
     public List<GameObject> susGaurds = new List<GameObject>();
     public StealthPlayerController player;
+    public bool playerHiding = false;
 
     [Header("key bindings")]
     public KeyCode SneakKey = KeyCode.LeftShift;
