@@ -77,6 +77,13 @@ public class Door : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay(Collider other) {
+        if (controllerLayers.Contains(other.gameObject.layer) && closed) {
+            Open();
+            closeTimer = 2;
+        }
+    }
+
     private void OnTriggerEnter(Collider other) {
         if (controllerLayers.Contains(other.gameObject.layer) && closed) {
             Open();

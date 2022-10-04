@@ -30,7 +30,9 @@ public class patrol : MonoBehaviour
             foreach (Vector3 pos in LineRPositions) {
                 patrolPoints.Add(pos);
             }
+            lineR.enabled = false;
         }
+        lineR = null;
     }
 
     // Update is called once per frame
