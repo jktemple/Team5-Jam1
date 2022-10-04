@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
@@ -19,6 +20,9 @@ public class StealthGameManager : MonoBehaviour
 
     [Header("UI")]
     public TextMeshProUGUI bottomText;
+    public Image stealthIcon;
+    public Sprite openEyeIcon;
+    public Sprite closedEyeIcon;
 
     //UI
     GameObject currentTextSource;        //which gameobject generated the text that's currently on the screen - this is so that text can be removed and overritten as needed
@@ -33,6 +37,8 @@ public class StealthGameManager : MonoBehaviour
 
     void Update()
     {
+        stealthIcon.sprite = player.crouching ? closedEyeIcon : openEyeIcon;
+
         if (alertedGaurds.Count > 0) {
             RedOverlay.SetActive(true);
         }
