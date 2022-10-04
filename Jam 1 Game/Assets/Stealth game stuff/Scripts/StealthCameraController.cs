@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StealthCameraController : MonoBehaviour
 {
-    public Vector2 yLimits;
+    public Vector2 zLimits;
 
     GameObject player;
 
@@ -14,8 +14,8 @@ public class StealthCameraController : MonoBehaviour
 
     void Update()
     {
-        float playerY = player.transform.position.y;
-        float targetY = playerY > yLimits.y ? yLimits.y : playerY;
-        transform.position = Vector3.Lerp(transform.position, new Vector3(StealthGameManager.instance.player.transform.position.x, transform.position.y, transform.position.z), 0.025f);
+        float playerZ = player.transform.position.z;
+        float targetZ = Mathf.Min(zLimits.y, Mathf.Max(zLimits.x, playerZ));
+        transform.position = Vector3.Lerp(transform.position, new Vector3(StealthGameManager.instance.player.transform.position.x, transform.position.y, targetZ), 0.025f);
     }
 }

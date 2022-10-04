@@ -22,6 +22,15 @@ public class patrol : MonoBehaviour
         if (infoScript.navAgent != null) {
             navAgent = infoScript.navAgent;
         }
+        LineRenderer lineR = GetComponent<LineRenderer>();
+        if (lineR != null) {
+            Vector3[] LineRPositions = new Vector3[lineR.positionCount];
+            lineR.GetPositions(LineRPositions);
+            patrolPoints.Clear();
+            foreach (Vector3 pos in LineRPositions) {
+                patrolPoints.Add(pos);
+            }
+        }
     }
 
     // Update is called once per frame

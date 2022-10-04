@@ -5,10 +5,15 @@ using UnityEngine;
 [ExecuteAlways]
 public class StealthStationaryGuard : MonoBehaviour
 {
+
+    [Header("setup")]
     public bool setStationPos;
     public Vector3 StationPos;
-    public Vector2 angleRange = new Vector2(0, 180);
+    public Quaternion stationBaseQuat;
+    public float stationBaseAngle;
     public float turnSpeed = 0.5f;
+    public float LowerLim;
+    public float upperLim;
 
     bool turningUp;
     float currentAngle = 0;
@@ -17,7 +22,8 @@ public class StealthStationaryGuard : MonoBehaviour
     StealthGaurdInfo infoScript;
 
     private void Start() {
-        transform.localEulerAngles = Vector3.zero;
+        transform.rotation = stationBaseQuat;
+        currentAngle = stationBaseAngle;
         infoScript = GetComponent<StealthGaurdInfo>();
     }
 
@@ -26,30 +32,33 @@ public class StealthStationaryGuard : MonoBehaviour
         if (setStationPos) {
             setStationPos = false;
             StationPos = transform.position;
+            stationBaseQuat = transform.rotation;
         }
 
-        if (!infoScript.suspicious && !infoScript.foundPlayer) {
+
+        if (!infoScript.suspicious && !infoScript.foundPlayer && Application.isPlaying) {
             if (Vector3.Distance(transform.position, StationPos) >= 1) {
                 infoScript.navAgent.SetDestination(StationPos);
                 pathing = true;
             }
             else {
                 if (pathing) {
-                    transform.localEulerAngles = Vector3.zero;
+                    transform.rotation = stationBaseQuat;
+                    currentAngle = stationBaseAngle;
                     pathing = false;
                 }
 
-                if (currentAngle > angleRange.x && !turningUp) {
+                if (currentAngle > (LowerLim) && !turningUp) {
                     currentAngle -= turnSpeed;
                     transform.localEulerAngles += new Vector3(0, -turnSpeed, 0);
-                    if (currentAngle <= angleRange.x) {
+                    if (currentAngle <= LowerLim) {
                         turningUp = true;
                     }
                 }
-                if (currentAngle < angleRange.y && turningUp) {
+                if (currentAngle < upperLim && turningUp) {
                     currentAngle += turnSpeed;
                     transform.localEulerAngles += new Vector3(0, turnSpeed, 0);
-                    if (currentAngle >= angleRange.y) {
+                    if (currentAngle >= upperLim) {
                         turningUp = false;
                     }
                 }
