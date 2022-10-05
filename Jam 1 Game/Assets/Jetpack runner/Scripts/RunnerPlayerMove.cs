@@ -8,15 +8,17 @@ using UnityEngine;
 public class RunnerPlayerMove : MonoBehaviour
 {
     private CharacterController controller;
-    private Vector3 playerVelocity;
+    public Vector3 playerVelocity;
     private bool groundedPlayer;
     private bool getJump;
     public float gravityAccel = -9.81f;
 
-    public float jetpackLiftAccel = 12.0f;
+    public float jetpackJerk = 4.0f;
+    public float jetpackLiftAccel = 12f;
 
-    public float jetpackHorzAccel = 20f;
-    public float terminalVelocity = 40f;
+    public float currentAccel = 0f;
+    public float terminalVelocity = 80f;
+    public float downwardCap = -30;
     //public float maxHeight;
 
 
@@ -28,12 +30,19 @@ public class RunnerPlayerMove : MonoBehaviour
     //eventually I think I want to input a jerk to the acceleration, or edit the movement speed a public bezier curve
 
 
-    void VelocityChange(float lift, float horzSpeed, float gravity)
+    void VelocityChange(float lift, float gravity)
     {
 
         if(getJump)
+        {   
+            if (currentAccel < jetpackLiftAccel)
+            {
+                currentAccel += jetpackJerk;
+            }
+            playerVelocity.y += currentAccel;
+        }else if(currentAccel > jetpackJerk)
         {
-            playerVelocity.y += lift;
+            currentAccel -= jetpackJerk/4;
         }
 
         if(!groundedPlayer)
@@ -41,12 +50,12 @@ public class RunnerPlayerMove : MonoBehaviour
             playerVelocity.y += gravity;
 
         }
-        playerVelocity.x += horzSpeed;
+        
 
 
         Vector3 offset = offsetCalc(playerVelocity);
         playerVelocity = Vector3.ClampMagnitude(offset, terminalVelocity);
-
+        playerVelocity.y = Mathf.Clamp(playerVelocity.y, downwardCap, 100);
     }
 
     Vector3 offsetCalc(Vector3 velocity)
@@ -79,7 +88,7 @@ public class RunnerPlayerMove : MonoBehaviour
 
 
 
-        VelocityChange(jetpackLiftAccel, jetpackHorzAccel, gravityAccel);
+        VelocityChange(jetpackLiftAccel, gravityAccel);
 
 
 

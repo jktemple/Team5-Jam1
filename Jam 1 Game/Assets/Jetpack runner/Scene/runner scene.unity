@@ -684,7 +684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7694d612b963e364b8990ceb9895045f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: {x: -0.2, y: 0, z: 0}
+  velocity: {x: -0.25, y: 0, z: 0}
 --- !u!1 &690188190
 GameObject:
   m_ObjectHideFlags: 0
@@ -1367,10 +1367,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb52ad3a2db20a4693290c79af74527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravityAccel: -9.81
-  jetpackLiftAccel: 14
-  jetpackHorzAccel: 1
-  terminalVelocity: 20
+  playerVelocity: {x: 0, y: 0, z: 0}
+  gravityAccel: -6.81
+  jetpackJerk: 2
+  jetpackLiftAccel: 12
+  currentAccel: 0
+  terminalVelocity: 55
+  downwardCap: -45
 --- !u!1001 &1373514927
 PrefabInstance:
   m_ObjectHideFlags: 0
