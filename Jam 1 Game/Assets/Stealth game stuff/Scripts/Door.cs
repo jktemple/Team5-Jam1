@@ -6,6 +6,9 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public List<int> controllerLayers = new List<int>();
+    public GameObject doorCollider;
+    public bool close = false;
+    public bool open = false;
 
     public bool automatic = true;
 
@@ -27,47 +30,65 @@ public class Door : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (open) {
+            open = false;
+            closeTimer = 2;
+            Open();
+        }
+        if (close) {
+            close = false;
+            Close();
+        }
+
+        if (setClose) {
+            setClose = false;
+            closePos = doorCollider.transform.position;
+        }
+        if (setOpen) {
+            setOpen = false;
+            openPos = doorCollider.transform.position;
+        }
+
+        if (!Application.isPlaying) { return; }
+
+
         if (!closed) {
             closeTimer -= Time.deltaTime;
             if (closeTimer <= 0) {
                 Close();
             }
         }
-        
 
         if (opening) {
-            transform.position = Vector3.Lerp(transform.position, openPos, 0.025f);
-            if (Vector3.Distance(transform.position, openPos) <= 0.01f) {
+            doorCollider.transform.position = Vector3.Lerp(doorCollider.transform.position, openPos, 0.05f);
+            if (Vector3.Distance(doorCollider.transform.position, openPos) <= 0.01f) {
                 opening = false;
+                closing = false;
                 closed = false;
             }
         }
         if (closing) {
-            transform.position = Vector3.Lerp(transform.position, closePos, 0.025f);
-            if (Vector3.Distance(transform.position, closePos) <= 0.01f) {
+            doorCollider.transform.position = Vector3.Lerp(doorCollider.transform.position, closePos, 0.05f);
+            if (Vector3.Distance(doorCollider.transform.position, closePos) <= 0.01f) {
                 closing = false;
+                opening = false;
                 closed = true;
             }
         }
 
 
-        if (setClose) {
-            setClose = false;
-            closePos = transform.position;
-        }
-        if (setOpen) {
-            setOpen = false;
-            openPos = transform.position;
-        }
+        
     }
 
     void Open() {
         print("opening");
         opening = true;
+        closing = false;
     }
 
     void Close() {
         closing = true;
+        opening = false;
     }
 
     private void OnTriggerExit(Collider other) {
@@ -78,7 +99,7 @@ public class Door : MonoBehaviour
     }
 
     private void OnTriggerStay(Collider other) {
-        if (controllerLayers.Contains(other.gameObject.layer) && closed) {
+        if (controllerLayers.Contains(other.gameObject.layer)) {
             Open();
             closeTimer = 2;
         }
