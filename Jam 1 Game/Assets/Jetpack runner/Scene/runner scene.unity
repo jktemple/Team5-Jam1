@@ -684,7 +684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7694d612b963e364b8990ceb9895045f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: {x: -0.2, y: 0, z: 0}
+  velocity: {x: -0.25, y: 0, z: 0}
 --- !u!1 &690188190
 GameObject:
   m_ObjectHideFlags: 0
@@ -1367,10 +1367,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb52ad3a2db20a4693290c79af74527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravityAccel: -9.81
-  jetpackLiftAccel: 14
-  jetpackHorzAccel: 1
-  terminalVelocity: 20
+  playerVelocity: {x: 0, y: 0, z: 0}
+  gravityAccel: -6.81
+  jetpackJerk: 2
+  jetpackLiftAccel: 12
+  currentAccel: 0
+  terminalVelocity: 55
+  downwardCap: -45
 --- !u!1001 &1373514927
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2067,7 +2070,9 @@ GameObject:
   - component: {fileID: 1819630552}
   - component: {fileID: 1819630551}
   - component: {fileID: 1819630554}
-  m_Layer: 0
+  - component: {fileID: 1819630556}
+  - component: {fileID: 1819630555}
+  m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -2107,7 +2112,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 93
+  field of view: 86.2
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -2132,14 +2137,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1819630550}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalRotation: {x: 0.1552011, y: -0, z: -0, w: 0.9878829}
+  m_LocalPosition: {x: 0, y: 7.2, z: -11.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 17.857, y: 0, z: 0}
 --- !u!114 &1819630554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2153,6 +2158,83 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CamPosOffset: {x: 0, y: 1.2, z: -10}
+--- !u!114 &1819630555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819630550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: 5e8b9c423f1512c4ca2f56e8a1cc2990, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
+--- !u!114 &1819630556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819630550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 1819630553}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 0
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
 --- !u!1 &1980697494 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 123151759081594125, guid: dec5e311889e4f3498ea555c717e6c59, type: 3}
