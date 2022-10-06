@@ -18,10 +18,17 @@ public class StealthPlayerController : MonoBehaviour
     public GameObject stone;
     public float forceMod = 2;
 
+    [Header("sounds")]
+    private AudioSource source;
+    public int walkFootstepSoundID = 0;
+    public int SneakFootstepSoundID = 1;
+    public int crouchSoundID = 2;
+
     float horizontal;
     float vertical;
 
     private void Awake() {
+        source = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -41,6 +48,7 @@ public class StealthPlayerController : MonoBehaviour
         }
         if (Input.GetKey(StealthGameManager.instance.SneakKey) && !crouching) {
             crouching = true;
+            SteathAudioManager.instance.PlayHere(crouchSoundID, source, restart:true );
         }
         else if (Input.GetKeyUp(StealthGameManager.instance.SneakKey) && crouching) {
             crouching = false;
@@ -87,6 +95,12 @@ public class StealthPlayerController : MonoBehaviour
 
     private void FixedUpdate() {
         float currentSpeed = crouching ? speed / 2 : speed;
+        if (Mathf.Abs(horizontal + vertical) > 0) {
+            SteathAudioManager.instance.PlayHere(crouching ? SneakFootstepSoundID : walkFootstepSoundID, source);
+        }
+        else {
+            SteathAudioManager.instance.StopSoundHere(crouching ? SneakFootstepSoundID : walkFootstepSoundID, source);
+        }
         rb.velocity = new Vector3(horizontal * currentSpeed, 0, vertical * currentSpeed);
     }
 

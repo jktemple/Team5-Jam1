@@ -7,9 +7,12 @@ public class SteathAudioManager : MonoBehaviour
     [System.Serializable]
     public class Sound
     {
+        public string name;
         public int ID;
         public AudioClip clip;
+        [Range(0, 1)]
         public float volume;
+        [Range(-3, 3)]
         public float pitch;
         public bool looping;
     }
@@ -21,6 +24,10 @@ public class SteathAudioManager : MonoBehaviour
 
     private void Awake() {
         instance = this;
+    }
+
+    private void Start() {
+        PlayHere(3, music);
     }
 
     private Sound getSoundFromID(int soundID) {
@@ -40,16 +47,29 @@ public class SteathAudioManager : MonoBehaviour
         }
     }
 
+    public void StopSoundHere(int soundID, AudioSource source) {
+        Sound toPlay = getSoundFromID(soundID);
+
+        if (source.clip == toPlay.clip && source.isPlaying) {
+            source.Stop();
+        }
+    }
+
     public void PlayGlobal(int soundID, float volume = -1) {
         PlayHere(soundID, global, volume);
     }
 
-    public void PlayHere(int soundID, AudioSource source, float volume = -1) {
+    public void PlayHere(int soundID, AudioSource source, float volume = -1, bool restart = false) {
         Sound toPlay = getSoundFromID(soundID);
+
         source.volume = volume == -1 ? toPlay.volume : volume;
         source.pitch = toPlay.pitch;
         source.loop = toPlay.looping;
-        source.clip = toPlay.clip;
-        source.Play();
+
+        if (source.clip != toPlay.clip || !source.isPlaying || restart == true) {
+            source.clip = toPlay.clip;
+            source.Play(); 
+        }
+        
     }
 }
