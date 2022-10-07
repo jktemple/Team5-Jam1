@@ -44,7 +44,7 @@ public class BulletHellController : MonoBehaviour
        // transform.Translate(new Vector3(-verticalInput,horizontalInput, 0) * moveSpeed * Time.deltaTime);
         
         if(Input.GetAxis("Fire1") > 0 && shields > 0 && shieldCoolingdown == false){
-            Debug.Log("Shields Up");
+            //Debug.Log("Shields Up");
             isShielded = true;
             shieldRenderer.enabled = true;
             shields = shields - shieldDecay*Time.deltaTime;
@@ -79,8 +79,14 @@ public class BulletHellController : MonoBehaviour
     void takeDamage(float damage){
         if(isShielded){
             shields -= damage;
+            Debug.Log("Shields = " + shields);
         } else {
             health -= damage;
+            Debug.Log("Health = " + health);
+        }
+
+        if(health<= 0){
+            Destroy(gameObject);
         }
     }
 
