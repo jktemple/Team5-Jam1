@@ -127,7 +127,7 @@ public class StealthGaurdInfo : MonoBehaviour
     public void BecomeSuspicious(Vector3 pointOfInterest) {
         if (foundPlayer) { return;  }
 
-        //if (!StealthGameManager.instance.susGaurds.Contains(gameObject)) { StealthGameManager.instance.susGaurds.Add(gameObject); }
+        if (!StealthGameManager.instance.susGaurds.Contains(gameObject)) { StealthGameManager.instance.susGaurds.Add(gameObject); }
         plumbob.GetComponent<MeshRenderer>().material = yellow;
         suspicious = true;
 

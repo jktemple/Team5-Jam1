@@ -22,8 +22,12 @@ public class Door : MonoBehaviour
     bool closed = true;
     float closeTimer = 0;
 
+    public int soundID = 5;
+    private AudioSource source;
+
     void Start()
     {
+        source = GetComponent<AudioSource>();
         Close();   
     }
 
@@ -60,16 +64,20 @@ public class Door : MonoBehaviour
         }
 
         if (opening) {
+            SteathAudioManager.instance.PlayHere(soundID, source);
             doorCollider.transform.position = Vector3.Lerp(doorCollider.transform.position, openPos, 0.05f);
             if (Vector3.Distance(doorCollider.transform.position, openPos) <= 0.01f) {
+                SteathAudioManager.instance.StopSoundHere(soundID, source);
                 opening = false;
                 closing = false;
                 closed = false;
             }
         }
         if (closing) {
+            SteathAudioManager.instance.PlayHere(soundID, source);
             doorCollider.transform.position = Vector3.Lerp(doorCollider.transform.position, closePos, 0.05f);
             if (Vector3.Distance(doorCollider.transform.position, closePos) <= 0.01f) {
+                SteathAudioManager.instance.StopSoundHere(soundID, source);
                 closing = false;
                 opening = false;
                 closed = true;

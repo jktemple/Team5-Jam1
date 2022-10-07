@@ -8,6 +8,9 @@ using UnityEngine.SceneManagement;
 public class StealthGameManager : MonoBehaviour
 {
     public static StealthGameManager instance;
+
+    [Range(0, 1)]
+    public float tension = 0;
     public GameObject RedOverlay;
     public GameObject YellowOverlay;
     public List<GameObject> alertedGaurds = new List<GameObject>();
@@ -38,6 +41,19 @@ public class StealthGameManager : MonoBehaviour
 
     void Update()
     {
+        
+        if (alertedGaurds.Count > 0) {
+            tension = Mathf.Lerp(tension, 1f, 0.01f);
+        }
+        else if (susGaurds.Count > 0 && tension < 0.5f) {
+            tension = Mathf.Lerp(tension, 0.5f, 0.01f);
+        }
+        else {
+            tension = Mathf.Lerp(tension, 0.1f, 0.01f);
+        }
+
+        SteathAudioManager.instance.SetMusicVolume(tension * 0.1f);
+
         stealthIcon.sprite = player.crouching ? closedEyeIcon : openEyeIcon;
 
         if (alertedGaurds.Count > 0) {
@@ -45,13 +61,6 @@ public class StealthGameManager : MonoBehaviour
         }
         else {
             RedOverlay.SetActive(false);
-            YellowOverlay.SetActive(false);
-        }
-
-        if (susGaurds.Count > 0 && !RedOverlay.activeInHierarchy) {
-            YellowOverlay.SetActive(true);
-        }
-        else {
             YellowOverlay.SetActive(false);
         }
     }
