@@ -99,6 +99,9 @@ public class StealthGaurdInfo : MonoBehaviour
             }
         }
         else {
+            if (foundPlayer && StealthGameManager.instance.playerHiding && investigateComponent != null) {
+                investigateComponent.InvestigateHidingPlace(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
+            }
             timeSeen = 0;
             forgetCounter -= Time.deltaTime;
             if (forgetCounter <= 0) {

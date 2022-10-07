@@ -12,6 +12,7 @@ public class StealthInvestigate : MonoBehaviour
     public float investigateLookSpeed = 0.5f;
     public float lookAroundAngleLim = 45;
     float investigateCounter;
+    bool investigatingBox;
 
     private void Start() {
         //make sure the point of interest in on the navMesh
@@ -24,6 +25,7 @@ public class StealthInvestigate : MonoBehaviour
 
     private void OnEnable() {
         lookAroundAngle = 0;
+        investigatingBox = false;
     }
 
     void Update()
@@ -37,6 +39,11 @@ public class StealthInvestigate : MonoBehaviour
             info.navAgent.SetDestination(pointOfInterest);
         }
         else {
+            if (investigatingBox) {
+                if (StealthGameManager.instance.playerHiding == true && (StealthGameManager.instance.player.transform.position.x == pointOfInterest.x && StealthGameManager.instance.player.transform.position.z == pointOfInterest.z)) {
+                    StealthGameManager.instance.KilPlayer();
+                }
+            }
             LookAround();
 
             investigateCounter -= Time.deltaTime;
@@ -48,11 +55,16 @@ public class StealthInvestigate : MonoBehaviour
         }
     }
 
+    public void InvestigateHidingPlace(Vector3 location) {
+        print("investigating box");
+        pointOfInterest = location;
+        investigatingBox = true;
+    }
+
     float lookAroundAngle;
     bool lookingUp = false;
     void LookAround() {
         if (lookAroundAngle <= lookAroundAngleLim && lookingUp) {
-            print("looking up. currentAngle: " + lookAroundAngle);
             lookAroundAngle += investigateLookSpeed;
             transform.Rotate(0, investigateLookSpeed, 0);
         }
@@ -60,7 +72,6 @@ public class StealthInvestigate : MonoBehaviour
             lookingUp = false;
         }
         if (lookAroundAngle >= -lookAroundAngleLim && !lookingUp) {
-            print("looking down. currentAngle: " + lookAroundAngle);
             lookAroundAngle -= investigateLookSpeed;
             transform.Rotate(0, -investigateLookSpeed, 0);
             
