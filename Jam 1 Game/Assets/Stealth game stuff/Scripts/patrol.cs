@@ -9,7 +9,7 @@ public class patrol : MonoBehaviour
     public bool stopWhenFound = true;
     private StealthGaurdInfo infoScript;
 
-    public bool setPosition;
+     bool setPosition;
     public List<Vector3> patrolPoints;
     private int index = 0;
 
