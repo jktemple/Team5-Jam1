@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO.IsolatedStorage;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -41,13 +42,6 @@ public class patrol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (infoScript.foundPlayer) {
-            return;
-        }
-        else if (infoScript.suspicious) {
-            navAgent.SetDestination(transform.position);
-            return;
-        }
 
         if (setPosition) {
             setPosition = false;
@@ -55,7 +49,7 @@ public class patrol : MonoBehaviour
             patrolPoints.Add(hit.position);
         }
 
-        if (!Application.isPlaying) {
+        if (!Application.isPlaying || infoScript.foundPlayer || infoScript.suspicious) {
             return;
         }
 

@@ -25,10 +25,11 @@ public class Stone : MonoBehaviour
     private void OnCollisionEnter(Collision collision) {
         SteathAudioManager.instance.PlayHere(stoneSoundID, source, restart:true);
         Collider[] listeners = Physics.OverlapSphere(transform.position, soundRange);
+
         foreach (Collider collider in listeners) {
             StealthGaurdInfo guardScript = collider.GetComponent<StealthGaurdInfo>();
             if (guardScript != null) {
-                guardScript.BecomeSuspicious(transform.position);
+                guardScript.BecomeSuspicious(transform.position, 3);
             }
         }
     }

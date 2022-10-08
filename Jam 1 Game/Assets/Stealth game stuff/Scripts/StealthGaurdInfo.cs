@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -29,7 +30,6 @@ public class StealthGaurdInfo : MonoBehaviour
     public Material white;
 
     float timeSeen = 0;
-    float timesuspicious = 0;
 
     private GameObject player;
     [HideInInspector] public NavMeshAgent navAgent;
@@ -76,12 +76,12 @@ public class StealthGaurdInfo : MonoBehaviour
 
     void SearchForPlayer() {
         //decrement the time the entity has spent suspicious
-        if (suspicious) {
+        /*if (suspicious && (investigateComponent != null && !investigateComponent.navigatingToPoint)) {
             susCoutner -= Time.deltaTime;
             if (susCoutner <= 0) {
                 EndSuspicion();
             }
-        }
+        }*/
 
         //raycast to player, if uninturrupted and at the correct angle and distance, player has been spotted.
         Physics.Raycast(transform.position + new Vector3(0, eyeLevelOffset, 0), player.transform.position - transform.position, out var hit);
@@ -91,20 +91,23 @@ public class StealthGaurdInfo : MonoBehaviour
         if (hit.collider.gameObject == player && angleToPlayer <= VisiblityConeAngle && distanceToPlayer <= maxVisibilityDistance) {
             timeSeen += Time.deltaTime;
 
-            if (timeSeen > Time.deltaTime * 2) {
+            if (timeSeen > 0) {
                 BecomeSuspicious(hit.point);
             }
             if (timeSeen >= alertTime) {
                 Alert();
             }
+            forgetCounter = forgetTime;
         }
         else {
             if (foundPlayer && StealthGameManager.instance.playerHiding && investigateComponent != null) {
                 investigateComponent.InvestigateHidingPlace(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
             }
             timeSeen = 0;
-            forgetCounter -= Time.deltaTime;
-            if (forgetCounter <= 0) {
+            if (!investigateComponent.enabled || !investigateComponent.navigatingToPoint || foundPlayer) { 
+                forgetCounter -= Time.deltaTime; 
+            }
+            if (forgetCounter <= 0 && foundPlayer) {
                 ForgetPlayer();
             }
         }
@@ -112,23 +115,28 @@ public class StealthGaurdInfo : MonoBehaviour
 
     void ForgetPlayer() {
         foundPlayer = false;
+        suspicious = false;
+        plumbob.GetComponent<MeshRenderer>().material = white;
         StealthGameManager.instance.alertedGaurds.Remove(gameObject);
+        EnableRegularBehavior();
     }
 
     void Alert() {
+        foundPlayer = true;
+        
         EndSuspicion();
         plumbob.GetComponent<MeshRenderer>().material = red;
         if (!StealthGameManager.instance.alertedGaurds.Contains(gameObject)) {
             StealthGameManager.instance.alertedGaurds.Add(gameObject);
         }
-        foundPlayer = true;
     }
 
-    public void BecomeSuspicious(Vector3 pointOfInterest) {
-        if (foundPlayer) { return;  }
+    public void BecomeSuspicious(Vector3 pointOfInterest, float _forgetTime = -1) {
+        if (foundPlayer) { return; }
 
         if (!StealthGameManager.instance.susGaurds.Contains(gameObject)) { StealthGameManager.instance.susGaurds.Add(gameObject); }
         plumbob.GetComponent<MeshRenderer>().material = yellow;
+        if (_forgetTime > 0) { forgetCounter = _forgetTime;  }
         suspicious = true;
 
         //optional component behavior
@@ -136,13 +144,38 @@ public class StealthGaurdInfo : MonoBehaviour
             investigateComponent.enabled = true;
             investigateComponent.pointOfInterest = pointOfInterest;
         }
+        DisableRegularBehavior();   
+    }
+
+    void DisableRegularBehavior()
+    {
+        if (GetComponent<patrol>() != null) { GetComponent<patrol>().enabled = false; }
+        if (GetComponent<StealthStationaryGuard>() != null) { GetComponent<StealthStationaryGuard>().enabled = false; }
+    }
+
+    void EnableRegularBehavior()
+    {
+        print("enabled regular behavior");
+
+        if (GetComponent<patrol>() != null) { GetComponent<patrol>().enabled = true; }
+        if (GetComponent<StealthStationaryGuard>() != null) { GetComponent<StealthStationaryGuard>().enabled = true; }
+        if (investigateComponent != null) { investigateComponent.enabled = false; }
     }
 
     //called to return guard to normal behavior. without certain components, it's called automatically after suspicionTime seconds. if those components are present, it's instead called from those scripts. example: stealthInevestigate.cs
     public void EndSuspicion(bool calledFromComponent = false) {
+        
+        print("suspicion ended!");
+        
         StealthGameManager.instance.susGaurds.Remove(gameObject);
         if (!suspicious || (!calledFromComponent && investigateComponent != null)) {
             return;
+        }
+        if (investigateComponent != null) {
+            investigateComponent.enabled = false;
+        }
+        if (!foundPlayer) {
+            EnableRegularBehavior();
         }
         plumbob.GetComponent<MeshRenderer>().material = white;
         suspicious = false;

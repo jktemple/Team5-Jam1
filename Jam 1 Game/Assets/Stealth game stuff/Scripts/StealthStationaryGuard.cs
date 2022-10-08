@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO.IsolatedStorage;
 using UnityEngine;
 
 [ExecuteAlways]
@@ -35,6 +36,9 @@ public class StealthStationaryGuard : MonoBehaviour
             stationBaseQuat = transform.rotation;
         }
 
+        if (infoScript.suspicious || infoScript.foundPlayer) {
+            return;
+        }
 
         if (!infoScript.suspicious && !infoScript.foundPlayer && Application.isPlaying) {
             if (Vector3.Distance(transform.position, StationPos) >= 1) {
