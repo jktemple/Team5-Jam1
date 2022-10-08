@@ -6,6 +6,9 @@ using UnityEngine.AI;
 [ExecuteAlways]
 public class patrol : MonoBehaviour
 {
+    public enum patrolType {loop, bounceBack };
+    public patrolType type;
+
     public bool stopWhenFound = true;
     private StealthGaurdInfo infoScript;
 
@@ -59,7 +62,12 @@ public class patrol : MonoBehaviour
         navAgent.SetDestination(patrolPoints[index]);
         if (Vector3.Distance(transform.position, patrolPoints[index]) < 1f) {
             index += 1;
-            if (index >= patrolPoints.Count) { index = 0; }
+            if (index >= patrolPoints.Count) { 
+                if (type == patrolType.bounceBack) {
+                    patrolPoints.Reverse();
+                }
+                index = 0; 
+            }
         }
     }
 
@@ -69,7 +77,7 @@ public class patrol : MonoBehaviour
             if (i < patrolPoints.Count - 1) {
                 Gizmos.DrawLine(patrolPoints[i], patrolPoints[i + 1]);
             }
-            else {
+            else if (type == patrolType.loop){
                 Gizmos.DrawLine(patrolPoints[i], patrolPoints[0]);
             }
         }
