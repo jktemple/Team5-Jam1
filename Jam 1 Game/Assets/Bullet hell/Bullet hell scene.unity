@@ -767,9 +767,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 889d92a01cd674d459fbd03fded7a339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waveSpeed: 0.5
   bulletsAmount: 20
   startAngle: 180
   endAngle: 360
+  spread: 2.8
 --- !u!1 &1662165605
 GameObject:
   m_ObjectHideFlags: 0
