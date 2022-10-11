@@ -9,6 +9,7 @@ public class StealthGaurdInfo : MonoBehaviour
     public bool foundPlayer = false;
     public bool suspicious = false;
     public bool targetPlayer = true;
+    public bool tutorial;
 
     [Header("alert settings")]
     public float eyeLevelOffset = 0.2f;
@@ -126,6 +127,12 @@ public class StealthGaurdInfo : MonoBehaviour
         
         EndSuspicion();
         plumbob.GetComponent<MeshRenderer>().material = red;
+
+        if (tutorial) {
+            StealthGameManager.instance.FailTutorialStage();
+            return;
+        }
+
         if (!StealthGameManager.instance.alertedGaurds.Contains(gameObject)) {
             StealthGameManager.instance.alertedGaurds.Add(gameObject);
         }

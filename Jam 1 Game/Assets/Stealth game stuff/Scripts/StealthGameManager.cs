@@ -32,6 +32,9 @@ public class StealthGameManager : MonoBehaviour
     //UI
     GameObject currentTextSource;        //which gameobject generated the text that's currently on the screen - this is so that text can be removed and overritten as needed
 
+    [Header("tutorial")]
+    public Vector3 tutorialResetPoint;
+
     private void Awake() {
         instance = this;
     }
@@ -90,6 +93,9 @@ public class StealthGameManager : MonoBehaviour
         }
     }
 
+    public void FailTutorialStage() {
+        player.transform.position = tutorialResetPoint;
+    }
     public void KilPlayer() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
