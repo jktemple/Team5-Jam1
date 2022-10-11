@@ -6,6 +6,7 @@ public class StealthTutorialBox : MonoBehaviour
 {
     public string text;
     public bool hideText;
+    public bool FlickerLight;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,6 +15,9 @@ public class StealthTutorialBox : MonoBehaviour
                 StealthGameManager.instance.HideText(gameObject, true);
             }
             StealthGameManager.instance.DisplayText(text, gameObject);
+            if (FlickerLight) {
+                StealthGameManager.instance.FlickerBrightLight();
+            }
         }
     }
 }

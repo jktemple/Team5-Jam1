@@ -17,6 +17,7 @@ public class StealthGameManager : MonoBehaviour
     public List<GameObject> susGaurds = new List<GameObject>();
     public StealthPlayerController player;
     public bool playerHiding = false;
+    public GameObject brightLight;
 
     [Header("key bindings")]
     public KeyCode SneakKey = KeyCode.LeftShift;
@@ -37,6 +38,7 @@ public class StealthGameManager : MonoBehaviour
 
     private void Start() {
         player = FindObjectOfType<StealthPlayerController>();
+        HideText(gameObject, true);
     }
 
     void Update()
@@ -62,6 +64,29 @@ public class StealthGameManager : MonoBehaviour
         else {
             RedOverlay.SetActive(false);
             YellowOverlay.SetActive(false);
+        }
+    }
+
+    public void TurnOffBrightLight() {
+        brightLight.SetActive(false);
+    }
+
+    public int flickerCount = 4;
+    public void FlickerBrightLight() {
+        StartCoroutine(flickerLight());
+    }
+
+    private IEnumerator flickerLight() {
+        brightLight.SetActive(false);
+        yield return new WaitForSeconds(Random.Range(0.1f, 0.3f));
+        brightLight.SetActive(true);
+        yield return new WaitForSeconds(Random.Range(0.1f, 0.3f));
+        flickerCount -= 1;
+        if (flickerCount > 0) {
+            StartCoroutine(flickerLight());
+        }
+        else {
+            TurnOffBrightLight();
         }
     }
 
