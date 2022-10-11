@@ -190,6 +190,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: StreetLight_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5363069966046420500, guid: 9f767df641d0be74aaca431727187edf, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788984451834247371, guid: 9f767df641d0be74aaca431727187edf, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f767df641d0be74aaca431727187edf, type: 3}
 --- !u!1001 &147911334
@@ -251,6 +259,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Road_01
       objectReference: {fileID: 0}
+    - target: {fileID: 5549064653812152998, guid: f8b1183d2e9cc794aa9d1ba30e51b968, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8b1183d2e9cc794aa9d1ba30e51b968, type: 3}
 --- !u!1001 &194307751
@@ -263,6 +275,10 @@ PrefabInstance:
     - target: {fileID: 123151759081594125, guid: dec5e311889e4f3498ea555c717e6c59, type: 3}
       propertyPath: m_Name
       value: CarLeftSide (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 123151759081594125, guid: dec5e311889e4f3498ea555c717e6c59, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 792164540349777847, guid: dec5e311889e4f3498ea555c717e6c59, type: 3}
       propertyPath: m_RootOrder
@@ -332,6 +348,10 @@ PrefabInstance:
     - target: {fileID: 123151759081594125, guid: dec5e311889e4f3498ea555c717e6c59, type: 3}
       propertyPath: m_Name
       value: Car Right Side (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 123151759081594125, guid: dec5e311889e4f3498ea555c717e6c59, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 792164540349777847, guid: dec5e311889e4f3498ea555c717e6c59, type: 3}
       propertyPath: m_RootOrder
@@ -476,6 +496,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: StreetLight_01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5363069966046420500, guid: 9f767df641d0be74aaca431727187edf, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788984451834247371, guid: 9f767df641d0be74aaca431727187edf, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f767df641d0be74aaca431727187edf, type: 3}
 --- !u!1 &530281233 stripped
@@ -563,6 +591,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: StreetLight_01
       objectReference: {fileID: 0}
+    - target: {fileID: 5363069966046420500, guid: 9f767df641d0be74aaca431727187edf, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788984451834247371, guid: 9f767df641d0be74aaca431727187edf, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f767df641d0be74aaca431727187edf, type: 3}
 --- !u!1 &678250474 stripped
@@ -648,6 +684,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarLeftSide (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 123151759081594125, guid: dec5e311889e4f3498ea555c717e6c59, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 792164540349777847, guid: dec5e311889e4f3498ea555c717e6c59, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -716,6 +756,10 @@ PrefabInstance:
     - target: {fileID: 123151759081594125, guid: dec5e311889e4f3498ea555c717e6c59, type: 3}
       propertyPath: m_Name
       value: CarLeftSide (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 123151759081594125, guid: dec5e311889e4f3498ea555c717e6c59, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 792164540349777847, guid: dec5e311889e4f3498ea555c717e6c59, type: 3}
       propertyPath: m_RootOrder
@@ -842,6 +886,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: StreetLight_01 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 5363069966046420500, guid: 9f767df641d0be74aaca431727187edf, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788984451834247371, guid: 9f767df641d0be74aaca431727187edf, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f767df641d0be74aaca431727187edf, type: 3}
 --- !u!1001 &853197843
@@ -911,6 +963,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: StreetLight_01 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5363069966046420500, guid: 9f767df641d0be74aaca431727187edf, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788984451834247371, guid: 9f767df641d0be74aaca431727187edf, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f767df641d0be74aaca431727187edf, type: 3}
 --- !u!1 &961156850 stripped
@@ -941,6 +1001,10 @@ PrefabInstance:
     - target: {fileID: 123151759081594125, guid: dec5e311889e4f3498ea555c717e6c59, type: 3}
       propertyPath: m_Name
       value: Car Right Side (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 123151759081594125, guid: dec5e311889e4f3498ea555c717e6c59, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 792164540349777847, guid: dec5e311889e4f3498ea555c717e6c59, type: 3}
       propertyPath: m_RootOrder
@@ -1067,6 +1131,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: StreetLight_01 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 5363069966046420500, guid: 9f767df641d0be74aaca431727187edf, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788984451834247371, guid: 9f767df641d0be74aaca431727187edf, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f767df641d0be74aaca431727187edf, type: 3}
 --- !u!1 &1167464578 stripped
@@ -1097,6 +1169,10 @@ PrefabInstance:
     - target: {fileID: 123151759081594125, guid: dec5e311889e4f3498ea555c717e6c59, type: 3}
       propertyPath: m_Name
       value: CarLeftSide (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 123151759081594125, guid: dec5e311889e4f3498ea555c717e6c59, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 792164540349777847, guid: dec5e311889e4f3498ea555c717e6c59, type: 3}
       propertyPath: m_RootOrder
@@ -1289,6 +1365,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21162b7e7db686349bd5406cf8edd23a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offset: {x: 0, y: -1.6, z: 0}
+  radius: 0.77
+  validLayers: 09000000
 --- !u!136 &1321314185
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1370,6 +1449,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: StreetLight_01 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5363069966046420500, guid: 9f767df641d0be74aaca431727187edf, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788984451834247371, guid: 9f767df641d0be74aaca431727187edf, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f767df641d0be74aaca431727187edf, type: 3}
 --- !u!1001 &1379756137
@@ -1382,6 +1469,10 @@ PrefabInstance:
     - target: {fileID: 123151759081594125, guid: dec5e311889e4f3498ea555c717e6c59, type: 3}
       propertyPath: m_Name
       value: CarLeftSide
+      objectReference: {fileID: 0}
+    - target: {fileID: 123151759081594125, guid: dec5e311889e4f3498ea555c717e6c59, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 792164540349777847, guid: dec5e311889e4f3498ea555c717e6c59, type: 3}
       propertyPath: m_RootOrder
@@ -1451,6 +1542,10 @@ PrefabInstance:
     - target: {fileID: 123151759081594125, guid: dec5e311889e4f3498ea555c717e6c59, type: 3}
       propertyPath: m_Name
       value: Car Right Side (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 123151759081594125, guid: dec5e311889e4f3498ea555c717e6c59, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 792164540349777847, guid: dec5e311889e4f3498ea555c717e6c59, type: 3}
       propertyPath: m_RootOrder
@@ -1577,6 +1672,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: StreetLight_01 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5363069966046420500, guid: 9f767df641d0be74aaca431727187edf, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788984451834247371, guid: 9f767df641d0be74aaca431727187edf, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f767df641d0be74aaca431727187edf, type: 3}
 --- !u!1 &1449375253
@@ -1701,6 +1804,10 @@ PrefabInstance:
     - target: {fileID: 123151759081594125, guid: dec5e311889e4f3498ea555c717e6c59, type: 3}
       propertyPath: m_Name
       value: Car Right Side
+      objectReference: {fileID: 0}
+    - target: {fileID: 123151759081594125, guid: dec5e311889e4f3498ea555c717e6c59, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 792164540349777847, guid: dec5e311889e4f3498ea555c717e6c59, type: 3}
       propertyPath: m_RootOrder
@@ -2113,6 +2220,10 @@ PrefabInstance:
     - target: {fileID: 123151759081594125, guid: dec5e311889e4f3498ea555c717e6c59, type: 3}
       propertyPath: m_Name
       value: Car Right Side (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 123151759081594125, guid: dec5e311889e4f3498ea555c717e6c59, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 792164540349777847, guid: dec5e311889e4f3498ea555c717e6c59, type: 3}
       propertyPath: m_RootOrder

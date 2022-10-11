@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class RunnerSkateboardTiming : MonoBehaviour
 {
-
+    //overlapSphere
+    public Vector3 offset;
+    public float radius;
+    public List<int> validLayers = new List<int>();
 
     //detect collision T seconds in the future -> on input, activate skating || on failure to input, detect failure
 
     bool groundTouch;
-    bool triggerTouch;
+    public bool triggerTouch;
 
 
     //public bool 
@@ -36,7 +39,7 @@ public class RunnerSkateboardTiming : MonoBehaviour
     void Start()
     {
         groundTouch = false;
-        triggerTouch = false;
+        //triggerTouch = false;
     }
 
     void OnCollisionStay()
@@ -51,14 +54,14 @@ public class RunnerSkateboardTiming : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        triggerTouch = true;
+        //triggerTouch = true;
         Debug.Log(other);
 
     }
 
     void OnTriggerExit()
     {
-        triggerTouch = false;
+        //triggerTouch = false;
     }
 
     // Update is called once per frame
@@ -71,5 +74,20 @@ public class RunnerSkateboardTiming : MonoBehaviour
     {
         skateboardCheck();
         Debug.Log(triggerTouch);
+
+
+        //overlap sphere example
+        triggerTouch = false;
+        Collider[] overlappedColliders = Physics.OverlapSphere(transform.position + offset, radius);
+        foreach (Collider collider in overlappedColliders) {
+            if (validLayers.Contains( collider.gameObject.layer) ) {
+                triggerTouch = true;
+            }
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position + offset, radius);
     }
 }
