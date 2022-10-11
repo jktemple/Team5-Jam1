@@ -440,6 +440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StealthGameSceneName: Stealth game
+  transitionSceneName: Transition Scene
   player: {fileID: 1340591458}
   videoTexture: {fileID: 1164463258}
 --- !u!1 &537909420
