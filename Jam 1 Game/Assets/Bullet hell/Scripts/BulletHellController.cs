@@ -31,11 +31,15 @@ public class BulletHellController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         shipRigidbody.MovePosition(transform.position + (new Vector3(horizontalInput, verticalInput, 0) * moveSpeed * Time.deltaTime));
-        /*Vector3 pos = Camera.main.WorldToViewportPoint (transform.position);
-        pos.x = Mathf.Clamp01(pos.x);
+       
+        
+    }
+
+    void LateUpdate(){
+        Vector3 pos = Camera.main.WorldToViewportPoint (transform.position);
         pos.y = Mathf.Clamp01(pos.y);
-        shipRigidbody.MovePosition(Camera.main.ViewportToWorldPoint(pos));
-        */
+        pos.x = Mathf.Clamp(pos.x, 0f, 0.5f);
+        transform.position = Camera.main.ViewportToWorldPoint(pos);
     }
     // Update is called once per frame
     void Update()

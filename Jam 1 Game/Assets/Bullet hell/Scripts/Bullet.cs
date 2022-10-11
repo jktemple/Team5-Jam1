@@ -18,7 +18,7 @@ public class Bullet : MonoBehaviour
     }
 
     void OnEnable(){
-        Invoke("Destroy", 3f);
+        Invoke("Destroy", 6f);
     }
     
     void FixedUpdate(){
