@@ -1,0 +1,41 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using UnityEngine;
+
+public class RunnerCarHit : MonoBehaviour
+{
+
+    public Vector3 frontOffset= new Vector3(0, 0, 0);
+    public float radius;
+    public List<int> validLayers = new List<int>();
+
+    // Start is called before the first frame update
+    void Start()
+    {
+    
+        
+
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+        
+        Collider[] overlappedColliders = Physics.OverlapSphere(transform.position + frontOffset, radius);
+        foreach (Collider collider in overlappedColliders)
+        {
+            if (validLayers.Contains(collider.gameObject.layer))
+            {
+                
+            }
+        }
+
+
+
+
+
+    }
+}
