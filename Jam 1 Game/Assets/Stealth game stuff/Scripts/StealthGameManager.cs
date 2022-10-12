@@ -33,6 +33,7 @@ public class StealthGameManager : MonoBehaviour
     GameObject currentTextSource;        //which gameobject generated the text that's currently on the screen - this is so that text can be removed and overritten as needed
 
     [Header("tutorial")]
+    public bool tutorialCompleted;
     public Vector3 tutorialResetPoint;
 
     private void Awake() {
@@ -42,6 +43,7 @@ public class StealthGameManager : MonoBehaviour
     private void Start() {
         player = FindObjectOfType<StealthPlayerController>();
         HideText(gameObject, true);
+        Application.targetFrameRate = 60;
     }
 
     void Update()
