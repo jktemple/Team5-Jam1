@@ -16,8 +16,12 @@ public class RunnerFoodManager : MonoBehaviour
         
     }
 
-    void OnTriggerEnter() => Destroy(gameObject); 
-
+    void OnTriggerEnter()
+    {
+        Destroy(gameObject);
+        print("food collected");
+    
+    }
 
     //from here I would want to communicate something to the UI, either using a observer pattern, or a singleton
 
