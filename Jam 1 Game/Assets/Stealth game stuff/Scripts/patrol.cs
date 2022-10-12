@@ -32,7 +32,8 @@ public class patrol : MonoBehaviour
             lineR.GetPositions(LineRPositions);
             patrolPoints.Clear();
             foreach (Vector3 pos in LineRPositions) {
-                patrolPoints.Add(pos);
+                NavMesh.SamplePosition(pos, out var hit, 30, NavMesh.AllAreas);
+                patrolPoints.Add(hit.position);
             }
             lineR.enabled = false;
         }

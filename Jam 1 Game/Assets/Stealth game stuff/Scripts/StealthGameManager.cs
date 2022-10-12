@@ -17,6 +17,7 @@ public class StealthGameManager : MonoBehaviour
     public List<GameObject> susGaurds = new List<GameObject>();
     public StealthPlayerController player;
     public bool playerHiding = false;
+    public GameObject brightLight;
 
     [Header("key bindings")]
     public KeyCode SneakKey = KeyCode.LeftShift;
@@ -31,12 +32,16 @@ public class StealthGameManager : MonoBehaviour
     //UI
     GameObject currentTextSource;        //which gameobject generated the text that's currently on the screen - this is so that text can be removed and overritten as needed
 
+    [Header("tutorial")]
+    public Vector3 tutorialResetPoint;
+
     private void Awake() {
         instance = this;
     }
 
     private void Start() {
         player = FindObjectOfType<StealthPlayerController>();
+        HideText(gameObject, true);
     }
 
     void Update()
@@ -65,6 +70,32 @@ public class StealthGameManager : MonoBehaviour
         }
     }
 
+    public void TurnOffBrightLight() {
+        brightLight.SetActive(false);
+    }
+
+    public int flickerCount = 4;
+    public void FlickerBrightLight() {
+        StartCoroutine(flickerLight());
+    }
+
+    private IEnumerator flickerLight() {
+        brightLight.SetActive(false);
+        yield return new WaitForSeconds(Random.Range(0.1f, 0.3f));
+        brightLight.SetActive(true);
+        yield return new WaitForSeconds(Random.Range(0.1f, 0.3f));
+        flickerCount -= 1;
+        if (flickerCount > 0) {
+            StartCoroutine(flickerLight());
+        }
+        else {
+            TurnOffBrightLight();
+        }
+    }
+
+    public void FailTutorialStage() {
+        player.transform.position = tutorialResetPoint;
+    }
     public void KilPlayer() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
@@ -76,8 +107,8 @@ public class StealthGameManager : MonoBehaviour
         bottomText.color = (Color) color;
     }
 
-    public void HideText(GameObject source) {
-        if (source != currentTextSource) { return; }
+    public void HideText(GameObject source, bool sourceOverride = false) {
+        if (source != currentTextSource && sourceOverride == false) { return; }
         bottomText.text = "";
         currentTextSource = null;
     }

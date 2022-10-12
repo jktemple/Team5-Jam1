@@ -6,11 +6,12 @@ using UnityEngine.SceneManagement;
 public class TransitionManager : MonoBehaviour
 {
     public List<string> sceneNames = new List<string>();
-    public GameObject parent;
+    public RectTransform _parent;
 
     void Start()
     {
-        parent.transform.position = new Vector3(-830 * (PlayerPrefs.GetInt("level") * 332), parent.transform.position.y, parent.transform.position.z);
+        print(332 * PlayerPrefs.GetInt("level") * Vector3.right);
+        _parent.anchoredPosition = Vector3.right * (332 * PlayerPrefs.GetInt("level"));
     }
 
     public void NextScene()
