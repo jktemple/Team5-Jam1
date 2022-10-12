@@ -4,7 +4,6 @@ using System.Runtime.InteropServices;
 using UnityEngine.SceneManagement;
 
 using UnityEngine;
-
 public class RunnerGameManager : MonoBehaviour
 {
     public static RunnerGameManager instance;
@@ -16,7 +15,6 @@ public class RunnerGameManager : MonoBehaviour
 
     //player reset throwaways
 
-    private bool resetState = false;
 
     //player death state
     public bool deathState = false;
@@ -36,7 +34,6 @@ public class RunnerGameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        playerObject = GameObject.Find("RunnerPlayer");
     
     
     }
@@ -49,13 +46,8 @@ public class RunnerGameManager : MonoBehaviour
 
     public void PlayerReset()
     {
-        _target = GameObject.Find("TargetOffset").transform;
-        _playerPos = GameObject.Find("RunnerPlayer").transform.position;
-        _playerPos.y = _playerPosOffset.y;
-
         print("reset");
         deathState = false;
-        resetState = true;
     }
 
     //Player death
@@ -73,7 +65,10 @@ public class RunnerGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //Application.targetFrameRate = 60;
+        playerObject = GameObject.Find("RunnerPlayer");
+
+
     }
 
     // Update is called once per frame
