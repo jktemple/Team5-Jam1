@@ -125,6 +125,13 @@ public class StealthGaurdInfo : MonoBehaviour
         plumbob.GetComponent<MeshRenderer>().material = red;
 
         if (tutorial) {
+            /*if (GetComponent<StealthStationaryGuard>() != null) {
+                transform.position = GetComponent<StealthStationaryGuard>().StationPos;
+                transform.rotation = GetComponent<StealthStationaryGuard>().stationBaseQuat;
+                transform.eulerAngles = new Vector3(0, GetComponent<StealthStationaryGuard>().stationBaseAngle, 0);
+                GetComponent<StealthStationaryGuard>().currentAngle = GetComponent<StealthStationaryGuard>().stationBaseAngle;
+            }*/
+            ForgetPlayer();
             StealthGameManager.instance.FailTutorialStage();
             return;
         }

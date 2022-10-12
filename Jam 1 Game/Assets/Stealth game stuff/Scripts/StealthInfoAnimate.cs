@@ -16,10 +16,12 @@ public class StealthInfoAnimate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        SteathAudioManager.instance.PlayHere(0, GetComponent<AudioSource>());
         transform.position += transform.forward * speed;
         if (Vector3.Distance(transform.position, destination) <= 0.5f){
             GetComponent<StealthPlayerController>().enabled = true;
             enabled = false;
+            SteathAudioManager.instance.StopSoundHere(0, GetComponent<AudioSource>());
         }
     }
 

@@ -59,7 +59,7 @@ public class StealthGameManager : MonoBehaviour
             tension = Mathf.Lerp(tension, 0.1f, 0.01f);
         }
 
-        SteathAudioManager.instance.SetMusicVolume(tension * 0.1f);
+        SteathAudioManager.instance.SetMusicVolume(tension);
 
         stealthIcon.sprite = player.crouching ? closedEyeIcon : openEyeIcon;
 
