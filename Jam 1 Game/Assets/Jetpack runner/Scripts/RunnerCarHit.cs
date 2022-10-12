@@ -21,16 +21,21 @@ public class RunnerCarHit : MonoBehaviour
     }
 
     // Update is called once per frame
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position + frontOffset, radius);
+
+    }
     void Update()
     {
-        
-        
+
         Collider[] overlappedColliders = Physics.OverlapSphere(transform.position + frontOffset, radius);
         foreach (Collider collider in overlappedColliders)
         {
             if (validLayers.Contains(collider.gameObject.layer))
             {
                 RunnerGameManager.instance.FailedGame();
+                print("hit!");
             }
         }
 

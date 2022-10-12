@@ -10,7 +10,7 @@ public class RunnerCameraBehavior : MonoBehaviour
     // 
     private Transform _target;
     private Vector3 _playerPos;
-    public Vector3 _playerPosOffset;
+    public Vector3 _playerPosOffset = new Vector3(10f, 2, 0);
     void Start()
     {
         // 
@@ -21,7 +21,7 @@ public class RunnerCameraBehavior : MonoBehaviour
     // 
     void LateUpdate()
     {
-
+        
         _target.position = (_playerPos + _playerPosOffset);
         // 
         this.transform.position = _target.
