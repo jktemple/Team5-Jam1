@@ -20,12 +20,12 @@ public class RunnerObjectMove : MonoBehaviour
     {
         if (reverse){
 
-            transform.position = transform.position - velocity;
+            transform.position = transform.position - (velocity * Time.deltaTime);
 
 
         }
         else { 
-            transform.position = transform.position + velocity;
+            transform.position = transform.position + (velocity * Time.deltaTime);
         }
     }
 }

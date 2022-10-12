@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class RunnerCarHit : MonoBehaviour
@@ -29,7 +30,7 @@ public class RunnerCarHit : MonoBehaviour
         {
             if (validLayers.Contains(collider.gameObject.layer))
             {
-                
+                RunnerGameManager.instance.FailedGame();
             }
         }
 
