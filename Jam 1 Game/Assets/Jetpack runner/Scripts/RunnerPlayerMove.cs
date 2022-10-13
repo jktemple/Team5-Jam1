@@ -1,8 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Security.Cryptography;
 using UnityEngine;
 
 public class RunnerPlayerMove : MonoBehaviour
@@ -24,10 +21,15 @@ public class RunnerPlayerMove : MonoBehaviour
 
     public Vector3 playerPos;
 
+    //Sound source stuff
+    public AudioSource source1;
+
+    public AudioSource source2;
+
     //the vectors are simply added together to find the new vector for change
-
-
     public Animator animator;
+
+
     //I give the functions a jetpack acceleration, a gravitational acceleration, and a terminal velocity and a player input -> new vector at a capped magnitude
     //eventually I think I want to input a jerk to the acceleration, or edit the movement speed a public bezier curve
 
@@ -79,7 +81,7 @@ public class RunnerPlayerMove : MonoBehaviour
     void Start()
     {
         controller = gameObject.GetComponent<CharacterController>();
-        animator = gameObject.GetComponent<Animator>();
+        animator = gameObject.GetComponent<Animator>(); 
     }
 
     // Update is called once per frame
@@ -93,24 +95,52 @@ public class RunnerPlayerMove : MonoBehaviour
 
         playerPos = transform.position;
 
+        int parry;
+
+        if (getJump && groundedPlayer)
+        {
+            RunnerSoundManager.instance.PlayHere(2, source2);
+        
+        
+        
+        }
+
+        if (!getJump)
+        {
+            RunnerSoundManager.instance.StopSoundHere(1, source1);
+
+
+
+        }
+
         if (getJump)
         {
+            RunnerSoundManager.instance.StopSoundHere(2, source2);
+
+            RunnerSoundManager.instance.PlayHere(1, source1);
             animator.SetBool("IsGrounded", false);
             animator.SetBool("IsJetpack", true);
+            
 
 
-        }else if (groundedPlayer)
+
+        }
+        else if (groundedPlayer)
         {
+            RunnerSoundManager.instance.StopSoundHere(1, source1);
+            RunnerSoundManager.instance.PlayHere(2, source2);
             animator.SetTrigger("IsParry");
             animator.SetBool("IsJetpack", false);
             animator.SetBool("IsGrounded", true);
+            
+
 
 
 
 
         }
- 
-       
+
+
 
 
 

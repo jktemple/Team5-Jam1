@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ea931a202026e4244ab9783a92a6656f
+guid: c850e3b44b0aad74e92fb48ec344b163
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Enemy_Spritesheet_0
+      name: transition run spritesheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 2068
-        height: 2156
+        width: 500
+        height: 600
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,20 +119,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 70275b99628de7a4289f146f1728b050
-      internalID: 2089651950
+      spriteID: 0a28ff64e1f4d4544be4625985e7918f
+      internalID: -1498565838
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_Spritesheet_1
+      name: transition run spritesheet_1
       rect:
         serializedVersion: 2
-        x: 2068
+        x: 500
         y: 0
-        width: 2068
-        height: 2156
+        width: 500
+        height: 600
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +140,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b32f5f705fc32eb40ab8c830e114ab60
-      internalID: -1315567068
+      spriteID: 1e8a002d5601f9841bed83b88f9eccb4
+      internalID: 1226161149
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_Spritesheet_2
+      name: transition run spritesheet_2
       rect:
         serializedVersion: 2
-        x: 4136
+        x: 1000
         y: 0
-        width: 2068
-        height: 2156
+        width: 500
+        height: 600
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,20 +161,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ed4b179a91fbed498bc149331954619
-      internalID: -1825199379
+      spriteID: c588ea5e04a10df419d55fe485038a67
+      internalID: -1094189743
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_Spritesheet_3
+      name: transition run spritesheet_3
       rect:
         serializedVersion: 2
-        x: 6204
+        x: 1500
         y: 0
-        width: 2068
-        height: 2156
+        width: 500
+        height: 600
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,8 +182,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc4a362800d05ed4cb3e88f96a83067a
-      internalID: 52774009
+      spriteID: 3ed0f38b943036f47b1b20970a6392dc
+      internalID: 71239021
       vertices: []
       indices: 
       edges: []
@@ -199,10 +199,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Enemy_Spritesheet_3: 52774009
-      Enemy_Spritesheet_0: 2089651950
-      Enemy_Spritesheet_1: -1315567068
-      Enemy_Spritesheet_2: -1825199379
+      transition run spritesheet_0: -1498565838
+      transition run spritesheet_2: -1094189743
+      transition run spritesheet_3: 71239021
+      transition run spritesheet_1: 1226161149
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
