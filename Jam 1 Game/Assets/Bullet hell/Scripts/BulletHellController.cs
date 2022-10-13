@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BulletHellController : MonoBehaviour
 {
+    public Healthbar healthbar;
     public float moveSpeed = 10;
     public float fireSpeed;
     public float startingSheilds;
@@ -25,6 +27,7 @@ public class BulletHellController : MonoBehaviour
     {
         shipRigidbody = GetComponent<Rigidbody2D>();
         shieldRenderer = sheildSprite.GetComponent<SpriteRenderer>();
+        healthbar.SetMaxHealth(health);
     }
 
     void FixedUpdate(){
@@ -37,8 +40,8 @@ public class BulletHellController : MonoBehaviour
 
     void LateUpdate(){
         Vector3 pos = Camera.main.WorldToViewportPoint (transform.position);
-        pos.y = Mathf.Clamp01(pos.y);
-        pos.x = Mathf.Clamp(pos.x, 0f, 0.5f);
+        pos.y = Mathf.Clamp(pos.y, 0.08f, 0.92f);
+        pos.x = Mathf.Clamp(pos.x, 0.05f, 0.5f);
         transform.position = Camera.main.ViewportToWorldPoint(pos);
     }
     // Update is called once per frame
@@ -87,6 +90,7 @@ public class BulletHellController : MonoBehaviour
         } else {
             health -= damage;
             Debug.Log("Health = " + health);
+            healthbar.SetHealth(health);
         }
 
         if(health<= 0){
