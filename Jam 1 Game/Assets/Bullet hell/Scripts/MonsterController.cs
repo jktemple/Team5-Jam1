@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using  UnityEngine.SceneManagement;
 
 public class MonsterController : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class MonsterController : MonoBehaviour
     {
         if(health <=0){
             Destroy(gameObject);
+            PlayerPrefs.SetInt("level", 3); 
+            SceneManager.LoadScene("Transition Scene");
         }
     }
 
