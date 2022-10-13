@@ -16,6 +16,11 @@ public class RunnerGameManager : MonoBehaviour
     public int maxFood;
     List<GameObject> foodUIs = new List<GameObject>();
 
+    public float foodOffset = 0f;
+    //foodUIWidth = Canvas width/3
+    //foodUIHeight = Canvas height/6
+
+    //foodUIIncrement = foodImageWidth + _UIoffset
 
   /*  for (int i = 0; i < maxFood; i++)
     {
