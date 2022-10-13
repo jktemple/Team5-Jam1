@@ -25,7 +25,7 @@ public class RunnerPlayerMove : MonoBehaviour
     //the vectors are simply added together to find the new vector for change
 
 
-
+    public Animator animator;
     //I give the functions a jetpack acceleration, a gravitational acceleration, and a terminal velocity and a player input -> new vector at a capped magnitude
     //eventually I think I want to input a jerk to the acceleration, or edit the movement speed a public bezier curve
 
@@ -34,7 +34,8 @@ public class RunnerPlayerMove : MonoBehaviour
     {
 
         if(getJump)
-        {   
+        {
+            //RunnerSoundManager.instance.PlayGlobal(1);
             if (currentAccel < jetpackLiftAccel)
             {
                 currentAccel += jetpackJerk;
@@ -70,10 +71,13 @@ public class RunnerPlayerMove : MonoBehaviour
     }
 
 
+
+
     // Start is called before the first frame update
     void Start()
     {
         controller = gameObject.GetComponent<CharacterController>();
+        animator = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -81,7 +85,27 @@ public class RunnerPlayerMove : MonoBehaviour
     {
         getJump = Input.GetButton("Jump");
         groundedPlayer = controller.isGrounded;
-        
+       // int groundHash = playerAnimator.StringToHash("isGrounded");
+       // int jetpackHash = playerAnimator.StringToHash("isJetpack");
+      //  int parryHash = playerAnimator.StringToHash("isParry");
+
+
+        if (getJump)
+        {
+            animator.SetBool("IsGrounded", false);
+            animator.SetBool("IsJetpack", true);
+
+
+        }else if (groundedPlayer)
+        {
+            animator.SetTrigger("IsParry");
+            animator.SetBool("IsJetpack", false);
+            animator.SetBool("IsGrounded", true);
+
+
+
+
+        }
  
        
 
