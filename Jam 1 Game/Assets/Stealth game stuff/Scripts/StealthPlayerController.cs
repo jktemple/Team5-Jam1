@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class StealthPlayerController : MonoBehaviour
@@ -10,8 +11,14 @@ public class StealthPlayerController : MonoBehaviour
     public bool hiding = false;
     public MeshRenderer crouchingVersion;
     MeshRenderer normalVersion;
+    private Vector3 targetRot;
+
+    public GameObject KnightObj;
 
     [Header("stone throwing")]
+    public float horizontalBound;
+    public float verticalBound;
+    public RectTransform pixelRawTextureRect;
     public LineRenderer aimLine;
     public bool canThrowStones = true;
     bool aiming = false;
@@ -40,7 +47,7 @@ public class StealthPlayerController : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        normalVersion.enabled = !crouching;
+        //normalVersion.enabled = !crouching;
         crouchingVersion.enabled = crouching;
 
         if (hiding) {
@@ -78,12 +85,20 @@ public class StealthPlayerController : MonoBehaviour
 
     void AimThrow() {
         aimLine.enabled = true;
-        Ray mousePosRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Vector3 lineEnd = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        lineEnd.y = transform.position.y;
-        Physics.Raycast(mousePosRay, out var hit);
-        aimLine.SetPosition(0, transform.position);
-        aimLine.SetPosition(1, Vector3.Lerp(aimLine.GetPosition(1), hit.point, 0.025f));
+        if (!StealthGameManager.instance.pixelShader) {
+            Ray mousePosRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Physics.Raycast(mousePosRay, out var hit);
+            aimLine.SetPosition(0, transform.position);
+            aimLine.SetPosition(1, Vector3.Lerp(aimLine.GetPosition(1), hit.point, 0.025f));
+        }
+        else {
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(pixelRawTextureRect, Input.mousePosition, null, out Vector2 localHit);
+            Vector2 viewportClick = new Vector2(localHit.x / pixelRawTextureRect.rect.xMax, localHit.y / (pixelRawTextureRect.rect.yMin *-1));
+            Vector3 lineEnd = new Vector3(horizontalBound * viewportClick.x, 0, verticalBound * viewportClick.y);
+
+            aimLine.SetPosition(0, transform.position);
+            aimLine.SetPosition(1, Vector3.Lerp(aimLine.GetPosition(1), lineEnd + transform.position, 0.025f));
+        }
     }
 
     void Throw() {
@@ -102,18 +117,45 @@ public class StealthPlayerController : MonoBehaviour
             SteathAudioManager.instance.StopSoundHere(crouching ? SneakFootstepSoundID : walkFootstepSoundID, source);
         }
         rb.velocity = new Vector3(horizontal * currentSpeed, 0, vertical * currentSpeed);
+
+        if (horizontal > 0 && vertical <= 0) {
+            KnightObj.transform.localEulerAngles = new Vector3(0, 180, 0);
+        }
+        if (horizontal < 0 && vertical <= 0) {
+            KnightObj.transform.localEulerAngles = new Vector3(0, 0, 0);
+        }
+        if (vertical > 0 && horizontal <= 0) {
+            KnightObj.transform.localEulerAngles = new Vector3(0, 90, 0);
+        }
+        if (vertical < 0 && horizontal <= 0) {
+            KnightObj.transform.localEulerAngles = new Vector3(0, 270, 0);
+        }
+
+        if (horizontal > 0 && vertical < 0) {
+            KnightObj.transform.localEulerAngles = new Vector3(0, 225, 0); // 225
+        }
+        if (horizontal > 0 && vertical > 0) {
+            KnightObj.transform.localEulerAngles = new Vector3(0, 135, 0);
+        }
+        if (vertical > 0 && horizontal < 0) {
+            KnightObj.transform.localEulerAngles = new Vector3(0, 45, 0); //45
+        }
+        if (vertical < 0 && horizontal < 0) {
+            KnightObj.transform.localEulerAngles = new Vector3(0, 315, 0);
+        }
+
     }
 
 
     public void Hide() {
         hiding = true;
         rb.constraints = RigidbodyConstraints.FreezeAll;
-        GetComponent<BoxCollider>().enabled = false;
+        GetComponent<CapsuleCollider>().enabled = false;
     }
 
     public void UnHide() {
         hiding = false;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
-        GetComponent<BoxCollider>().enabled = true;
+        GetComponent<CapsuleCollider>().enabled = true;
     }
 }

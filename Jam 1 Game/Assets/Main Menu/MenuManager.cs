@@ -32,3 +32,17 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene(transitionSceneName);
     }
 }
+
+
+
+
+/*public class BubblePop : MonoBehaviour {
+
+
+    private void Update()
+    {
+        if (Input.GetMouseButton(0)) {
+
+        }
+    }
+}*/

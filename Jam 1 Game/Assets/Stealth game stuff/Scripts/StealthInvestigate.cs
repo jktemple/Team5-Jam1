@@ -38,8 +38,7 @@ public class StealthInvestigate : MonoBehaviour
         }
 
         //path to point of interest. once there, wait for investigateCounter seconds before disabling this behaviour;
-        if (Vector3.Distance(transform.position, validPointOfInterest) > 1f) {
-            print("travelling to destination...");
+        if (Vector3.Distance(transform.position, validPointOfInterest) > 1f && info.navAgent.speed > 0) {
             navigatingToPoint = true;
             if ( !info.navAgent.SetDestination(validPointOfInterest)) {
                 RecalculateValidPointOfInterest();

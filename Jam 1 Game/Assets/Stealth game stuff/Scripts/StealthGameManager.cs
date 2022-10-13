@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class StealthGameManager : MonoBehaviour
 {
     public static StealthGameManager instance;
+    public bool pixelShader = true;
 
     [Range(0, 1)]
     public float tension = 0;
@@ -28,11 +29,14 @@ public class StealthGameManager : MonoBehaviour
     public Image stealthIcon;
     public Sprite openEyeIcon;
     public Sprite closedEyeIcon;
+    public GameObject pauseParent;
+    [HideInInspector] public bool paused;
 
     //UI
     GameObject currentTextSource;        //which gameobject generated the text that's currently on the screen - this is so that text can be removed and overritten as needed
 
     [Header("tutorial")]
+    public bool tutorialCompleted;
     public Vector3 tutorialResetPoint;
 
     private void Awake() {
@@ -42,11 +46,16 @@ public class StealthGameManager : MonoBehaviour
     private void Start() {
         player = FindObjectOfType<StealthPlayerController>();
         HideText(gameObject, true);
+        Application.targetFrameRate = 60;
     }
 
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            TogglePause();
+        }
+
+
         if (alertedGaurds.Count > 0) {
             tension = Mathf.Lerp(tension, 1f, 0.01f);
         }
@@ -57,7 +66,7 @@ public class StealthGameManager : MonoBehaviour
             tension = Mathf.Lerp(tension, 0.1f, 0.01f);
         }
 
-        SteathAudioManager.instance.SetMusicVolume(tension * 0.1f);
+        SteathAudioManager.instance.SetMusicVolume(tension);
 
         stealthIcon.sprite = player.crouching ? closedEyeIcon : openEyeIcon;
 
@@ -68,6 +77,20 @@ public class StealthGameManager : MonoBehaviour
             RedOverlay.SetActive(false);
             YellowOverlay.SetActive(false);
         }
+    }
+
+    void TogglePause()
+    {
+        if (!paused) {
+            pauseParent.SetActive(true);
+            paused = true;
+            Time.timeScale = 0;
+        }
+        else {
+            pauseParent.SetActive(false);
+            paused = false;
+            Time.timeScale = 1;
+        }   
     }
 
     public void TurnOffBrightLight() {

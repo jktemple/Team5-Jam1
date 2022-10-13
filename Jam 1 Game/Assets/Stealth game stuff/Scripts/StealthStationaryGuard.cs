@@ -17,7 +17,7 @@ public class StealthStationaryGuard : MonoBehaviour
     public float upperLim;
 
     bool turningUp;
-    float currentAngle = 0;
+    public float currentAngle = 0;
     bool pathing;
 
     StealthGaurdInfo infoScript;
@@ -30,6 +30,8 @@ public class StealthStationaryGuard : MonoBehaviour
 
     void Update()
     {
+        if (StealthGameManager.instance.paused) { return; }
+
         if (setStationPos) {
             setStationPos = false;
             StationPos = transform.position;
@@ -48,8 +50,10 @@ public class StealthStationaryGuard : MonoBehaviour
             else {
                 if (pathing) {
                     transform.rotation = stationBaseQuat;
+                    transform.eulerAngles = new Vector3(0, stationBaseAngle, 0);
                     currentAngle = stationBaseAngle;
                     pathing = false;
+                    infoScript.navAgent.isStopped = true;
                 }
 
                 if (currentAngle > (LowerLim) && !turningUp) {

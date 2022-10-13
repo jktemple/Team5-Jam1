@@ -7,6 +7,7 @@ public class RunnerObjectMove : MonoBehaviour
 {
 
     public Vector3 velocity = new Vector3(-1.0f, 0f, 0f);
+    public bool reverse;
    
     // Start is called before the first frame update
     void Start()
@@ -17,7 +18,14 @@ public class RunnerObjectMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = transform.position + velocity;
+        if (reverse){
 
+            transform.position = transform.position - (velocity * Time.deltaTime);
+
+
+        }
+        else { 
+            transform.position = transform.position + (velocity * Time.deltaTime);
+        }
     }
 }

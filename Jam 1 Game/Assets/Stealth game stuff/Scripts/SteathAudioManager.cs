@@ -19,6 +19,7 @@ public class SteathAudioManager : MonoBehaviour
     public List<Sound> sounds = new List<Sound>();
 
     public static SteathAudioManager instance;
+
     public AudioSource music;
     public AudioSource global;
 
@@ -70,6 +71,5 @@ public class SteathAudioManager : MonoBehaviour
             source.clip = toPlay.clip;
             source.Play(); 
         }
-        
     }
 }

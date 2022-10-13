@@ -39,41 +39,11 @@ public class RunnerSkateboardTiming : MonoBehaviour
     void Start()
     {
         groundTouch = false;
-        //triggerTouch = false;
     }
-
-    void OnCollisionStay()
-    {
-        groundTouch = true;
-    }
-
-    void OnCollisionExit()
-    {
-        groundTouch = false;
-    }
-
-    void OnTriggerStay(Collider other)
-    {
-        //triggerTouch = true;
-        Debug.Log(other);
-
-    }
-
-    void OnTriggerExit()
-    {
-        //triggerTouch = false;
-    }
-
-    // Update is called once per frame
-
-
-
-
 
     void Update()
     {
         skateboardCheck();
-        Debug.Log(triggerTouch);
 
 
         //overlap sphere example

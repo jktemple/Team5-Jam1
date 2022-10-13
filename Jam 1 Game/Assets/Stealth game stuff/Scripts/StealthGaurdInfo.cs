@@ -58,6 +58,10 @@ public class StealthGaurdInfo : MonoBehaviour
 
     void Update()
     {
+        if (StealthGameManager.instance.tutorialCompleted) {
+            maxVisibilityDistance = 0;
+        }
+
         if (targetPlayer) {
             SearchForPlayer();
         }
@@ -76,14 +80,6 @@ public class StealthGaurdInfo : MonoBehaviour
     }
 
     void SearchForPlayer() {
-        //decrement the time the entity has spent suspicious
-        /*if (suspicious && (investigateComponent != null && !investigateComponent.navigatingToPoint)) {
-            susCoutner -= Time.deltaTime;
-            if (susCoutner <= 0) {
-                EndSuspicion();
-            }
-        }*/
-
         //raycast to player, if uninturrupted and at the correct angle and distance, player has been spotted.
         Physics.Raycast(transform.position + new Vector3(0, eyeLevelOffset, 0), player.transform.position - transform.position, out var hit);
         float angleToPlayer = Vector3.Angle(player.transform.position - transform.position, transform.forward);
@@ -129,6 +125,13 @@ public class StealthGaurdInfo : MonoBehaviour
         plumbob.GetComponent<MeshRenderer>().material = red;
 
         if (tutorial) {
+            /*if (GetComponent<StealthStationaryGuard>() != null) {
+                transform.position = GetComponent<StealthStationaryGuard>().StationPos;
+                transform.rotation = GetComponent<StealthStationaryGuard>().stationBaseQuat;
+                transform.eulerAngles = new Vector3(0, GetComponent<StealthStationaryGuard>().stationBaseAngle, 0);
+                GetComponent<StealthStationaryGuard>().currentAngle = GetComponent<StealthStationaryGuard>().stationBaseAngle;
+            }*/
+            ForgetPlayer();
             StealthGameManager.instance.FailTutorialStage();
             return;
         }
