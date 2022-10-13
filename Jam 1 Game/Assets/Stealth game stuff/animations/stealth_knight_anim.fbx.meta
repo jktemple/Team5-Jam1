@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: c13557f2508f1b146b9051f3cacb9431
+=======
+guid: 6930def3a8913d74eb785c9134159dad
+>>>>>>> 931c20f3167a0bdd6bf6624edeffe44c07f4d465
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
@@ -34,6 +38,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
+<<<<<<< HEAD
     clipAnimations:
     - serializedVersion: 16
       name: Armature|ArmatureAction
@@ -64,6 +69,9 @@ ModelImporter:
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
+=======
+    clipAnimations: []
+>>>>>>> 931c20f3167a0bdd6bf6624edeffe44c07f4d465
     isReadable: 0
   meshes:
     lODScreenPercentages: []

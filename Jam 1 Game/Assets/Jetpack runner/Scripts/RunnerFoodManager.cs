@@ -20,6 +20,7 @@ public class RunnerFoodManager : MonoBehaviour
     {
         Destroy(gameObject);
         print("food collected");
+        RunnerGameManager.instance.foodCollected += 1;
     
     }
 

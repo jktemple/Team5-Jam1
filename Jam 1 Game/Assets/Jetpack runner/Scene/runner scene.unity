@@ -569,6 +569,8 @@ MonoBehaviour:
   currentAccel: 0
   terminalVelocity: 80
   downwardCap: -30
+  maxHeight: 40
+  playerPos: {x: 0, y: 0, z: 0}
   animator: {fileID: 0}
 --- !u!143 &162038480
 CharacterController:
