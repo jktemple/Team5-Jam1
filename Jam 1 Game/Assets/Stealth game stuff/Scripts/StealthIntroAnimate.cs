@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StealthInfoAnimate : MonoBehaviour
+public class StealthIntroAnimate : MonoBehaviour
 {
     public float speed;
     public float distance;
