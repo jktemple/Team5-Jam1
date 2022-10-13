@@ -16,6 +16,7 @@ public class StealthHidingPlace : MonoBehaviour
         if (interactable) {
             if (Input.GetKeyDown(StealthGameManager.instance.interactKey)) {
                 if (!StealthGameManager.instance.player.hiding) {
+                    SteathAudioManager.instance.PlayGlobal(7);
                     StealthGameManager.instance.playerHiding = true;
                     collision.enabled = false;
                     ExitPos = StealthGameManager.instance.player.transform.position;
