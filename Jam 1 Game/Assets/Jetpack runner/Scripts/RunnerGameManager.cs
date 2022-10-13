@@ -9,9 +9,23 @@ public class RunnerGameManager : MonoBehaviour
     public static RunnerGameManager instance;
     public GameObject playerObject;
 
+    public GameObject canvas;
+    public GameObject foodUI;
+
     public int foodCollected = 0;
     public int maxFood;
+    List<GameObject> foodUIs = new List<GameObject>();
 
+
+  /*  for (int i = 0; i < maxFood; i++)
+    {
+    
+
+
+
+    }
+
+    */
 
     //player reset throwaways
 
