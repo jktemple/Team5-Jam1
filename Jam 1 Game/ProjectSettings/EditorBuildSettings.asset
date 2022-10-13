@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Main Menu/Main Menu Scene.unity
+    path: Assets/Menus and transitions/Main Menu Scene.unity
     guid: 3cd00fe02ca89f946b700ccebab250cf
   - enabled: 1
-    path: Assets/Main Menu/Transition Scene.unity
+    path: Assets/Menus and transitions/Transition Scene.unity
     guid: be2b6bc253ff88747a7a650c8e407dd0
   - enabled: 1
     path: Assets/Stealth game stuff/Scenes/Stealth game menu.unity

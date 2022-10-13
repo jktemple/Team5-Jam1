@@ -1,20 +1,12 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 5ed6699ba49874441b29caeb09b2c4ac
-=======
-guid: db5e334e7beda2642bcc6e5c6b96213f
->>>>>>> b925f75848790444dffdf90331c32da61c477890
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
-<<<<<<< HEAD
-    enableMipMap: 0
-=======
     enableMipMap: 1
->>>>>>> b925f75848790444dffdf90331c32da61c477890
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -44,15 +36,9 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-<<<<<<< HEAD
-    wrapU: 1
-    wrapV: 1
-    wrapW: 1
-=======
     wrapU: 0
     wrapV: 0
     wrapW: 0
->>>>>>> b925f75848790444dffdf90331c32da61c477890
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -65,11 +51,7 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-<<<<<<< HEAD
-  alphaIsTransparency: 1
-=======
   alphaIsTransparency: 0
->>>>>>> b925f75848790444dffdf90331c32da61c477890
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
@@ -80,24 +62,15 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-<<<<<<< HEAD
-  applyGammaDecoding: 0
-  cookieLightType: 0
-=======
   applyGammaDecoding: 1
   cookieLightType: 2
->>>>>>> b925f75848790444dffdf90331c32da61c477890
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-<<<<<<< HEAD
-    textureCompression: 1
-=======
     textureCompression: 0
->>>>>>> b925f75848790444dffdf90331c32da61c477890
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -109,11 +82,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-<<<<<<< HEAD
-    textureCompression: 1
-=======
     textureCompression: 0
->>>>>>> b925f75848790444dffdf90331c32da61c477890
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -125,11 +94,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-<<<<<<< HEAD
-    textureCompression: 1
-=======
     textureCompression: 0
->>>>>>> b925f75848790444dffdf90331c32da61c477890
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
