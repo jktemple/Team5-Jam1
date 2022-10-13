@@ -30,6 +30,8 @@ public class StealthStationaryGuard : MonoBehaviour
 
     void Update()
     {
+        if (StealthGameManager.instance.paused) { return; }
+
         if (setStationPos) {
             setStationPos = false;
             StationPos = transform.position;

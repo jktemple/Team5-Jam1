@@ -9,6 +9,7 @@ public class StealthTutorialBox : MonoBehaviour
     public bool FlickerLight;
     public bool checkpoint = true;
     public bool CompleteTutorial;
+    public bool deleteWhenTriggered;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -19,6 +20,7 @@ public class StealthTutorialBox : MonoBehaviour
             if (hideText) {StealthGameManager.instance.HideText(gameObject, true); }
             if (FlickerLight) { StealthGameManager.instance.FlickerBrightLight(); }
             StealthGameManager.instance.DisplayText(text, gameObject);
+            if (deleteWhenTriggered) { Destroy(gameObject);  }
 
         }
     }
