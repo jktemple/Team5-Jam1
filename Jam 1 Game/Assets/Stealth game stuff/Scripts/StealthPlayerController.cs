@@ -10,6 +10,9 @@ public class StealthPlayerController : MonoBehaviour
     public bool hiding = false;
     public MeshRenderer crouchingVersion;
     MeshRenderer normalVersion;
+    private Vector3 targetRot;
+
+    public GameObject KnightObj;
 
     [Header("stone throwing")]
     public LineRenderer aimLine;
@@ -40,7 +43,7 @@ public class StealthPlayerController : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        normalVersion.enabled = !crouching;
+        //normalVersion.enabled = !crouching;
         crouchingVersion.enabled = crouching;
 
         if (hiding) {
@@ -102,6 +105,33 @@ public class StealthPlayerController : MonoBehaviour
             SteathAudioManager.instance.StopSoundHere(crouching ? SneakFootstepSoundID : walkFootstepSoundID, source);
         }
         rb.velocity = new Vector3(horizontal * currentSpeed, 0, vertical * currentSpeed);
+
+        if (horizontal > 0 && vertical <= 0) {
+            KnightObj.transform.localEulerAngles = new Vector3(0, 180, 0);
+        }
+        if (horizontal < 0 && vertical <= 0) {
+            KnightObj.transform.localEulerAngles = new Vector3(0, 0, 0);
+        }
+        if (vertical > 0 && horizontal <= 0) {
+            KnightObj.transform.localEulerAngles = new Vector3(0, 90, 0);
+        }
+        if (vertical < 0 && horizontal <= 0) {
+            KnightObj.transform.localEulerAngles = new Vector3(0, 270, 0);
+        }
+
+        if (horizontal > 0 && vertical < 0) {
+            KnightObj.transform.localEulerAngles = new Vector3(0, 225, 0); // 225
+        }
+        if (horizontal > 0 && vertical > 0) {
+            KnightObj.transform.localEulerAngles = new Vector3(0, 135, 0);
+        }
+        if (vertical > 0 && horizontal < 0) {
+            KnightObj.transform.localEulerAngles = new Vector3(0, 45, 0); //45
+        }
+        if (vertical < 0 && horizontal < 0) {
+            KnightObj.transform.localEulerAngles = new Vector3(0, 315, 0);
+        }
+
     }
 
 
