@@ -96,7 +96,6 @@ public class Door : MonoBehaviour
 
     void Open() {
         playedSound = false;
-        print("opening");
         opening = true;
         closing = false;
     }

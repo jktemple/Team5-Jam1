@@ -24,7 +24,6 @@ public class RunnerRoadMove : MonoBehaviour
 
             transform.position = transform.position - (velocity * Time.deltaTime);
 
-
         }
         else
         {

@@ -30,15 +30,19 @@ public class StealthStationaryGuard : MonoBehaviour
 
     void Update()
     {
+        
+
         if (setStationPos) {
             setStationPos = false;
             StationPos = transform.position;
             stationBaseQuat = transform.rotation;
         }
 
-        if (infoScript.suspicious || infoScript.foundPlayer) {
+        if (infoScript.suspicious || infoScript.foundPlayer || !Application.isPlaying) {
             return;
         }
+
+        if (StealthGameManager.instance.paused) { return; }
 
         if (!infoScript.suspicious && !infoScript.foundPlayer && Application.isPlaying) {
             if (Vector3.Distance(transform.position, StationPos) >= 1) {
