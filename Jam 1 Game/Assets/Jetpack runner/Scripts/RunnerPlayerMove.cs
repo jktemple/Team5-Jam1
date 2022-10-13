@@ -20,7 +20,9 @@ public class RunnerPlayerMove : MonoBehaviour
     public float terminalVelocity = 80f;
     public float downwardCap = -30;
     //public float maxHeight;
+    public float maxHeight = 100f;
 
+    public Vector3 playerPos;
 
     //the vectors are simply added together to find the new vector for change
 
@@ -33,7 +35,7 @@ public class RunnerPlayerMove : MonoBehaviour
     void VelocityChange(float lift, float gravity)
     {
 
-        if(getJump)
+        if(getJump && (maxHeight > transform.position.y))
         {
             //RunnerSoundManager.instance.PlayGlobal(1);
             if (currentAccel < jetpackLiftAccel)
@@ -85,10 +87,11 @@ public class RunnerPlayerMove : MonoBehaviour
     {
         getJump = Input.GetButton("Jump");
         groundedPlayer = controller.isGrounded;
-       // int groundHash = playerAnimator.StringToHash("isGrounded");
-       // int jetpackHash = playerAnimator.StringToHash("isJetpack");
-      //  int parryHash = playerAnimator.StringToHash("isParry");
+        // int groundHash = playerAnimator.StringToHash("isGrounded");
+        // int jetpackHash = playerAnimator.StringToHash("isJetpack");
+        //  int parryHash = playerAnimator.StringToHash("isParry");
 
+        playerPos = transform.position;
 
         if (getJump)
         {
