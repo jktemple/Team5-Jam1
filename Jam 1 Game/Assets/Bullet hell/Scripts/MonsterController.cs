@@ -6,6 +6,8 @@ using  UnityEngine.SceneManagement;
 public class MonsterController : MonoBehaviour
 {
     public Fadeout fader;
+    public Animator animator;
+   
     public float health = 100;
     // Start is called before the first frame update
     void Start()
@@ -17,9 +19,10 @@ public class MonsterController : MonoBehaviour
     void Update()
     {
         if(health <=0){
-            Destroy(gameObject);
+            //Destroy(gameObject);
             PlayerPrefs.SetInt("level", 3); 
-            fader.FadeToLevel("Transition Scene");
+            animator.SetTrigger("WinState");
+            
         }
     }
 
@@ -31,6 +34,10 @@ public class MonsterController : MonoBehaviour
 
     public void Swing(){
         FindObjectOfType<AudioManager>().Play("Boss Swing");
+    }
+
+    public void Fade(){
+        fader.FadeToLevel("Transition Scene");
     }
 
     
