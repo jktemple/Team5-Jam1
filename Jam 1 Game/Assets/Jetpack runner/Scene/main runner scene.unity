@@ -13274,6 +13274,67 @@ Transform:
   m_Father: {fileID: 5746564759719197930}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &5162518722283760899
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7751189789863951176, guid: af137d7dc6a3a644387a6cda2cb9d10f, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7751189789863951176, guid: af137d7dc6a3a644387a6cda2cb9d10f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 7751189789863951176, guid: af137d7dc6a3a644387a6cda2cb9d10f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7751189789863951176, guid: af137d7dc6a3a644387a6cda2cb9d10f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 7751189789863951176, guid: af137d7dc6a3a644387a6cda2cb9d10f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.49798924
+      objectReference: {fileID: 0}
+    - target: {fileID: 7751189789863951176, guid: af137d7dc6a3a644387a6cda2cb9d10f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.49782196
+      objectReference: {fileID: 0}
+    - target: {fileID: 7751189789863951176, guid: af137d7dc6a3a644387a6cda2cb9d10f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5020013
+      objectReference: {fileID: 0}
+    - target: {fileID: 7751189789863951176, guid: af137d7dc6a3a644387a6cda2cb9d10f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.50217015
+      objectReference: {fileID: 0}
+    - target: {fileID: 7751189789863951176, guid: af137d7dc6a3a644387a6cda2cb9d10f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -0.479
+      objectReference: {fileID: 0}
+    - target: {fileID: 7751189789863951176, guid: af137d7dc6a3a644387a6cda2cb9d10f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -89.981
+      objectReference: {fileID: 0}
+    - target: {fileID: 7751189789863951176, guid: af137d7dc6a3a644387a6cda2cb9d10f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7751189789863951221, guid: af137d7dc6a3a644387a6cda2cb9d10f, type: 3}
+      propertyPath: m_Name
+      value: SkateboardSpark
+      objectReference: {fileID: 0}
+    - target: {fileID: 7751189789863951221, guid: af137d7dc6a3a644387a6cda2cb9d10f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: af137d7dc6a3a644387a6cda2cb9d10f, type: 3}
 --- !u!4 &5338952497485000616 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7917718646300414562, guid: 87db9a834efbb25478b35ccc5b0878ce, type: 3}
