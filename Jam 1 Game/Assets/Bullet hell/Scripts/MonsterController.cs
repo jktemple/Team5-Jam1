@@ -7,7 +7,7 @@ public class MonsterController : MonoBehaviour
 {
     public Fadeout fader;
     public Animator animator;
-    public BulletPool pool;
+   
     public float health = 100;
     // Start is called before the first frame update
     void Start()
@@ -22,7 +22,7 @@ public class MonsterController : MonoBehaviour
             //Destroy(gameObject);
             PlayerPrefs.SetInt("level", 3); 
             animator.SetTrigger("WinState");
-            pool.SetActive(false);
+            
         }
     }
 
