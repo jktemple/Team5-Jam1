@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using  UnityEngine.SceneManagement;
 
 public class BulletHellController : MonoBehaviour
 {
     public Healthbar healthbar;
+    public Fadeout fader;
     public float moveSpeed = 10;
     public float fireSpeed;
     public float startingSheilds;
@@ -21,6 +23,7 @@ public class BulletHellController : MonoBehaviour
     public GameObject sheildSprite;
     private SpriteRenderer shieldRenderer;
     public float cooldownTimer;
+   
     
     // Start is called before the first frame update
     void Start()
@@ -78,6 +81,7 @@ public class BulletHellController : MonoBehaviour
            // Debug.Log("Fire");
             timer = 0;
             Instantiate(bullet, transform.position, Quaternion.identity);
+            FindObjectOfType<AudioManager>().Play("Sword Swing");
         }
         timer += Time.deltaTime;
         //Debug.Log(timer);
@@ -86,6 +90,7 @@ public class BulletHellController : MonoBehaviour
     void takeDamage(float damage){
         if(isShielded){
             shields -= damage;
+            FindObjectOfType<AudioManager>().Play("Sheild Clank");
             Debug.Log("Shields = " + shields);
         } else {
             health -= damage;
@@ -95,6 +100,7 @@ public class BulletHellController : MonoBehaviour
 
         if(health<= 0){
             Destroy(gameObject);
+            fader.FadeToLevel("Bull Hell Menu");
         }
     }
 

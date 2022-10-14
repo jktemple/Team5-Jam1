@@ -5,6 +5,7 @@ using  UnityEngine.SceneManagement;
 
 public class MonsterController : MonoBehaviour
 {
+    public Fadeout fader;
     public float health = 100;
     // Start is called before the first frame update
     void Start()
@@ -18,13 +19,18 @@ public class MonsterController : MonoBehaviour
         if(health <=0){
             Destroy(gameObject);
             PlayerPrefs.SetInt("level", 3); 
-            SceneManager.LoadScene("Transition Scene");
+            fader.FadeToLevel("Transition Scene");
         }
     }
 
     public void ApplyDamage(float damage){
         health = health - damage;
         Debug.Log("Damage applied: " + health);
+        FindObjectOfType<AudioManager>().Play("Plant Hit");
+    }
+
+    public void Swing(){
+        FindObjectOfType<AudioManager>().Play("Boss Swing");
     }
 
     
