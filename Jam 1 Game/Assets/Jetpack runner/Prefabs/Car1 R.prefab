@@ -181,3 +181,4 @@ MonoBehaviour:
   frontOffset: {x: -0.75, y: 0.73, z: 0}
   radius: 3
   validLayers: 03000000
+  carType: 1
