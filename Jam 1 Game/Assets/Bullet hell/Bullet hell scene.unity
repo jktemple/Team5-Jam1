@@ -1265,6 +1265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fader: {fileID: 1309248927}
+  animator: {fileID: 1271642212}
   health: 100
 --- !u!114 &1271642211
 MonoBehaviour:
