@@ -90,7 +90,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frontOffset: {x: -0.75, y: 0.73, z: 0}
   radius: 3
-  validLayers: 
+  validLayers: 03000000
+  carType: 2
 --- !u!1 &9184873881461573745
 GameObject:
   m_ObjectHideFlags: 0
