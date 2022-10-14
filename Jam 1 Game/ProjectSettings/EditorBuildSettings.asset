@@ -18,9 +18,15 @@ EditorBuildSettings:
     path: Assets/Stealth game stuff/Scenes/Stealth game.unity
     guid: 3285e2d34e5f15445a02307e626a674c
   - enabled: 1
+    path: Assets/Jetpack runner/Scene/main runner scene.unity
+    guid: 08b30dedbe505be439467a3ae6553e65
+  - enabled: 1
     path: Assets/Bullet hell/Bull Hell Menu.unity
     guid: dcd95d6565bf7d34f83c980b694dd277
   - enabled: 1
     path: Assets/Bullet hell/Bullet hell scene.unity
     guid: b75f54110d78fa040a4a3d16326532dc
+  - enabled: 1
+    path: Assets/Menus and transitions/Picnic scene.unity
+    guid: 1a95d2e4d43658b45af28126e63ac9d6
   m_configObjects: {}

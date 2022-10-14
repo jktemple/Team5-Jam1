@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class StealthWinZone : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other) {
+    public GameObject guards;
+    public GameObject outfitSprite;
+
+    private void OnTriggerEnter(Collider other)
+    {
         if (other.gameObject == StealthGameManager.instance.player.gameObject) {
-            StealthGameManager.instance.DisplayText("!!!!!!YOU WIN!!!!!!", gameObject, Color.yellow);
-            Camera.main.gameObject.GetComponent<AudioListener>().enabled = false;
-            Time.timeScale = 0;
+            StealthGameManager.instance.DisplayText("Alright, I got the Suit! Now I just need some food", gameObject, Color.white);
+            guards.SetActive(false);
+
+            outfitSprite.SetActive(true);
         }
     }
+    
 }
