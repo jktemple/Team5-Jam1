@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2865113013735444437}
-  m_LocalRotation: {x: 0.68292445, y: -0.18288353, z: -0.18294501, w: 0.68315375}
+  m_LocalRotation: {x: 0.6829249, y: -0.18288758, z: -0.18294725, w: 0.6831516}
   m_LocalPosition: {x: 0.02, y: 1.33, z: 6.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -41,7 +41,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2865113013735444437}
   serializedVersion: 8
-  lengthInSec: 4
+  lengthInSec: 5
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -116,7 +116,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -977,7 +977,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 150
+        scalar: 300
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -1042,21 +1042,21 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 0.77663994
-          inSlope: 1.1107373
-          outSlope: 1.1107373
+          value: 1
+          inSlope: -2
+          outSlope: -2
           tangentMode: 0
           weightedMode: 0
           inWeight: 0
-          outWeight: 0.08235318
+          outWeight: 0
         - serializedVersion: 3
           time: 1
           value: 0
-          inSlope: -0.409592
-          outSlope: -0.409592
+          inSlope: 0
+          outSlope: 0
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.06203208
+          inWeight: 0
           outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -2085,30 +2085,21 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 0.03553319
-          inSlope: 20.430437
-          outSlope: 20.430437
+          value: 1
+          inSlope: -2
+          outSlope: -2
           tangentMode: 0
           weightedMode: 0
           inWeight: 0
-          outWeight: 0.041002445
-        - serializedVersion: 3
-          time: 0.21782896
-          value: 0.46918803
-          inSlope: -4.07823
-          outSlope: -4.07823
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0.18815161
-          outWeight: 0.054789573
+          outWeight: 0
         - serializedVersion: 3
           time: 1
-          value: -0.31980208
-          inSlope: 0.17920256
-          outSlope: 0.17920256
+          value: 0
+          inSlope: 0
+          outSlope: 0
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.07239329
+          inWeight: 0
           outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
