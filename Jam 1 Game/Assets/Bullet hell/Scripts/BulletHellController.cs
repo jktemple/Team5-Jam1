@@ -96,6 +96,7 @@ public class BulletHellController : MonoBehaviour
             health -= damage;
             Debug.Log("Health = " + health);
             healthbar.SetHealth(health);
+            FindObjectOfType<AudioManager>().Play("Player Hit");
         }
 
         if(health<= 0){
