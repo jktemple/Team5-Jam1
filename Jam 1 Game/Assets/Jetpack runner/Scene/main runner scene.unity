@@ -7939,7 +7939,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: f205fa1e54424fb49aeb822345b0d80f, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.064
-  m_Pitch: 1
+  m_Pitch: 0.61
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -9807,13 +9807,13 @@ MonoBehaviour:
     ID: 0
     clip: {fileID: 8300000, guid: f205fa1e54424fb49aeb822345b0d80f, type: 3}
     volume: 0.21
-    pitch: 1
+    pitch: 0.61
     looping: 0
   - name: Jetpack
     ID: 1
     clip: {fileID: 8300000, guid: 3d01cc0548f08c14495c65dd6d9b092c, type: 3}
     volume: 0.173
-    pitch: 0.52
+    pitch: 0.45
     looping: 0
   - name: boardJump
     ID: 2
@@ -9830,8 +9830,8 @@ MonoBehaviour:
   - name: death
     ID: 4
     clip: {fileID: 8300000, guid: ac08306402e804f42a7667470c559ee4, type: 3}
-    volume: 0.384
-    pitch: 0.31
+    volume: 0.276
+    pitch: 0.42
     looping: 0
   - name: honk1
     ID: 5
