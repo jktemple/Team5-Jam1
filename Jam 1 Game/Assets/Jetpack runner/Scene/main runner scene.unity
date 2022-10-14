@@ -9813,13 +9813,13 @@ MonoBehaviour:
     ID: 1
     clip: {fileID: 8300000, guid: 3d01cc0548f08c14495c65dd6d9b092c, type: 3}
     volume: 0.173
-    pitch: 1
+    pitch: 0.52
     looping: 0
   - name: boardJump
     ID: 2
     clip: {fileID: 8300000, guid: fd0ab5da3ad1fc547883f1c6dc140cb8, type: 3}
     volume: 0.18
-    pitch: 1
+    pitch: 0.48
     looping: 0
   - name: foodCollection
     ID: 3
@@ -9831,25 +9831,25 @@ MonoBehaviour:
     ID: 4
     clip: {fileID: 8300000, guid: ac08306402e804f42a7667470c559ee4, type: 3}
     volume: 0.384
-    pitch: 1.03
+    pitch: 0.31
     looping: 0
   - name: honk1
     ID: 5
     clip: {fileID: 8300000, guid: cbc85691a9369f04399aaee66a83f849, type: 3}
-    volume: 0.3
-    pitch: 1
+    volume: 0
+    pitch: 0.74
     looping: 0
   - name: honk2
     ID: 6
     clip: {fileID: 8300000, guid: e72c3921c90f07b4d8a804d58b4cd823, type: 3}
-    volume: 0.3
-    pitch: 1
+    volume: 0
+    pitch: 0.51
     looping: 0
   - name: honk3
     ID: 7
     clip: {fileID: 8300000, guid: 35d4fbe1e4049d84a92f6ecf28bd3c6c, type: 3}
-    volume: 0.3
-    pitch: 1
+    volume: 0
+    pitch: 0.54
     looping: 0
   music: {fileID: 499274547}
   global: {fileID: 616229836}
