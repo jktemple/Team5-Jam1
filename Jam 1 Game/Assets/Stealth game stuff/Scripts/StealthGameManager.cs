@@ -73,6 +73,9 @@ public class StealthGameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape)) {
             TogglePause();
         }
+        if (paused && Input.GetKeyDown(KeyCode.R)) {
+            SceneManager.LoadScene(0);
+        }
 
 
         if (alertedGaurds.Count > 0) {

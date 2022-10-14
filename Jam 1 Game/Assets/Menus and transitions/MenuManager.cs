@@ -30,9 +30,14 @@ public class MenuManager : MonoBehaviour
         }
     }
 
+    public void ExitGame() {
+        Application.Quit();
+    }
+
     public void PlayCutscene1()
     {
         player.gameObject.SetActive(true);
+        player.enabled = true;
         videoTexture.SetActive(true);
 
         player.Play();
