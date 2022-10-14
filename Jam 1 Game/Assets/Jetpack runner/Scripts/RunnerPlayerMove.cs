@@ -29,6 +29,7 @@ public class RunnerPlayerMove : MonoBehaviour
     //the vectors are simply added together to find the new vector for change
     public Animator animator;
 
+    private bool parry = false;
 
     //I give the functions a jetpack acceleration, a gravitational acceleration, and a terminal velocity and a player input -> new vector at a capped magnitude
     //eventually I think I want to input a jerk to the acceleration, or edit the movement speed a public bezier curve
@@ -74,12 +75,6 @@ public class RunnerPlayerMove : MonoBehaviour
 
     }
 
-    void OnControllerColliderHit()
-    {
-       
-
-    }
-
 
     // Start is called before the first frame update
     void Start()
@@ -99,7 +94,6 @@ public class RunnerPlayerMove : MonoBehaviour
 
         playerPos = transform.position;
 
-        int parry;
 
         if (getJump && groundedPlayer)
         {
@@ -124,7 +118,7 @@ public class RunnerPlayerMove : MonoBehaviour
             RunnerSoundManager.instance.PlayHere(1, source1);
             animator.SetBool("IsGrounded", false);
             animator.SetBool("IsJetpack", true);
-            
+            parry = true;
 
 
 
@@ -134,7 +128,13 @@ public class RunnerPlayerMove : MonoBehaviour
             //if bool audio, setbool to false,
 
             RunnerSoundManager.instance.StopSoundHere(1, source1);
-            RunnerSoundManager.instance.PlayHere(2, source2);
+
+            if (parry)
+            {
+               RunnerSoundManager.instance.PlayHere(2, source2);
+               parry = false;
+            }
+           
 
             animator.SetTrigger("IsParry");
             animator.SetBool("IsJetpack", false);
