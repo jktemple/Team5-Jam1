@@ -45,10 +45,8 @@ public class StealthPlayerController : MonoBehaviour
         normalVersion = GetComponent<MeshRenderer>();
     }
 
-    // Update is called once per frame
     void Update() {
-        //normalVersion.enabled = !crouching;
-        crouchingVersion.enabled = crouching;
+        crouchingVersion.gameObject.SetActive(crouching);
 
         if (hiding) {
             return;
@@ -112,36 +110,39 @@ public class StealthPlayerController : MonoBehaviour
         float currentSpeed = crouching ? speed / 2 : speed;
         if (Mathf.Abs(horizontal + vertical) > 0) {
             SteathAudioManager.instance.PlayHere(crouching ? SneakFootstepSoundID : walkFootstepSoundID, source);
+            KnightObj.GetComponent<Animator>().enabled = true;
         }
         else {
+            KnightObj.GetComponent<Animator>().enabled = false;
             SteathAudioManager.instance.StopSoundHere(crouching ? SneakFootstepSoundID : walkFootstepSoundID, source);
         }
         rb.velocity = new Vector3(horizontal * currentSpeed, 0, vertical * currentSpeed);
 
+        GameObject toTurn = crouching ? crouchingVersion.gameObject : KnightObj;
         if (horizontal > 0 && vertical <= 0) {
-            KnightObj.transform.localEulerAngles = new Vector3(0, 180, 0);
+            toTurn.transform.localEulerAngles = new Vector3(0, 180, 0);
         }
         if (horizontal < 0 && vertical <= 0) {
-            KnightObj.transform.localEulerAngles = new Vector3(0, 0, 0);
+            toTurn.transform.localEulerAngles = new Vector3(0, 0, 0);
         }
         if (vertical > 0 && horizontal <= 0) {
-            KnightObj.transform.localEulerAngles = new Vector3(0, 90, 0);
+            toTurn.transform.localEulerAngles = new Vector3(0, 90, 0);
         }
         if (vertical < 0 && horizontal <= 0) {
-            KnightObj.transform.localEulerAngles = new Vector3(0, 270, 0);
+            toTurn.transform.localEulerAngles = new Vector3(0, 270, 0);
         }
 
         if (horizontal > 0 && vertical < 0) {
-            KnightObj.transform.localEulerAngles = new Vector3(0, 225, 0); // 225
+            toTurn.transform.localEulerAngles = new Vector3(0, 225, 0); // 225
         }
         if (horizontal > 0 && vertical > 0) {
-            KnightObj.transform.localEulerAngles = new Vector3(0, 135, 0);
+            toTurn.transform.localEulerAngles = new Vector3(0, 135, 0);
         }
         if (vertical > 0 && horizontal < 0) {
-            KnightObj.transform.localEulerAngles = new Vector3(0, 45, 0); //45
+            toTurn.transform.localEulerAngles = new Vector3(0, 45, 0); //45
         }
         if (vertical < 0 && horizontal < 0) {
-            KnightObj.transform.localEulerAngles = new Vector3(0, 315, 0);
+            toTurn.transform.localEulerAngles = new Vector3(0, 315, 0);
         }
 
     }

@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 3005360483899320843}
   - component: {fileID: 3005360483899320842}
   m_Layer: 0
-  m_Name: Van2 R
+  m_Name: Van2 L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,7 +110,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3005360483899320846}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -248.46658, y: -19.07053, z: 44.57579}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -118,7 +118,7 @@ Transform:
   - {fileID: 3005360484398079854}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!65 &3005360483899320840
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -130,8 +130,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8.439819, y: 4.671749, z: 3.8672848}
-  m_Center: {x: 2.3449402, y: 2.3404155, z: 0}
+  m_Size: {x: 8.501038, y: 4.671749, z: 3.8672848}
+  m_Center: {x: 2.3607178, y: 2.3404155, z: 0}
 --- !u!114 &3005360483899320843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: -18, y: 0, z: 0}
-  reverse: 0
+  reverse: 1
 --- !u!114 &3005360483899320842
 MonoBehaviour:
   m_ObjectHideFlags: 0
