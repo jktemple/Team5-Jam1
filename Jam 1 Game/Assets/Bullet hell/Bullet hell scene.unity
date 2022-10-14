@@ -215,7 +215,7 @@ MonoBehaviour:
   fireSpeed: 0.25
   startingSheilds: 50
   shields: 50
-  shieldDecay: 20
+  shieldDecay: 15
   shieldCooldownTimer: 2
   health: 100
   bullet: {fileID: 2731637376480824453, guid: 358df8789b1f57847a6214572fae948a, type: 3}
@@ -1020,6 +1020,11 @@ MonoBehaviour:
     volume: 0.238
     pitch: 1
     source: {fileID: 0}
+  - name: Player Hit
+    clip: {fileID: 8300000, guid: 60eee3e2e4365344f853b7b1474b60a1, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
 --- !u!4 &916631862
 Transform:
   m_ObjectHideFlags: 0
@@ -1274,10 +1279,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveSpeed: 0.42
-  bulletsAmount: 20
+  bulletsAmount: 23
   startAngle: 180
   endAngle: 360
-  spread: 2.74
+  spread: 2.4
   switchTime: 4.1
 --- !u!95 &1271642212
 Animator:

@@ -246,7 +246,6 @@ MonoBehaviour:
   frontOffset: {x: -2.42, y: 1.61, z: 0}
   radius: 3
   validLayers: 03000000
-  carType: 3
   audioSource: {fileID: -5382741594986058522}
 --- !u!82 &-5382741594986058522
 AudioSource:
@@ -260,8 +259,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 35d4fbe1e4049d84a92f6ecf28bd3c6c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
-  m_Pitch: 1
+  m_Volume: 0.247
+  m_Pitch: 0.14
   Loop: 0
   Mute: 0
   Spatialize: 0

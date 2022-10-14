@@ -33,16 +33,17 @@ public class FireBullets : MonoBehaviour
     {
         float angleStep = (endAngle-startAngle)/bulletsAmount;
         float angle = startAngle;
-        
+        Vector3 spawnChange = new Vector3(0,Random.Range(-0.5f, 0.5f),0);
         for(int i = 0; i < bulletsAmount; i++){
             float bulDirX = transform.position.x + Mathf.Sin((angle*Mathf.PI)/180);
             float bulDirY = transform.position.y + Mathf.Cos((angle*Mathf.PI)/180);
 
             Vector3 bulMoveVector = new Vector3(bulDirX, bulDirY, 0f);
             Vector3 bulDir = (bulMoveVector - transform.position).normalized;
+            
 
             GameObject bul = BulletPool.bulletPoolInstance.GetBullet();
-                bul.transform.position = transform.position;
+                bul.transform.position = transform.position + spawnChange;
                 bul.transform.rotation = transform.rotation;
                 bul.SetActive(true);
                 bul.GetComponent<Bullet>().setDirection(bulDir);

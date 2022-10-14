@@ -17,8 +17,8 @@ GameObject:
   m_Name: hiding place
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &5511898084630363818
 Transform:
@@ -98,8 +98,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.9760717, y: 1.2603507, z: 2.129222}
-  m_Center: {x: 0, y: 0.13017532, z: -0.5646094}
+  m_Size: {x: 1.322052, y: 1.2603507, z: 1.9120741}
+  m_Center: {x: 0, y: 0.13017535, z: -0.4560351}
 --- !u!114 &5511898084630363822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,8 +131,8 @@ GameObject:
   m_Name: collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &5511898084725889212
 Transform:
@@ -240,6 +240,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f10d439a2e77d3f439eb236c93fe6b16, type: 3}
       propertyPath: m_Name
       value: stealth_box
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f10d439a2e77d3f439eb236c93fe6b16, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f10d439a2e77d3f439eb236c93fe6b16, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f10d439a2e77d3f439eb236c93fe6b16, type: 3}
