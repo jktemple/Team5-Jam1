@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 using UnityEngine;
 public class RunnerGameManager : MonoBehaviour
@@ -19,7 +20,15 @@ public class RunnerGameManager : MonoBehaviour
     public float foodOffset = 0f;
 
     public AudioSource death;
-    
+    private bool initial = true;
+    //TextUI
+
+    public GameObject instructionObj;
+    public TextMeshProUGUI textMesh;
+    /// <summary>
+    /// 
+    /// </summary>
+
     //foodUIWidth = Canvas width/3
     //foodUIHeight = Canvas height/6
 
@@ -42,8 +51,6 @@ public class RunnerGameManager : MonoBehaviour
     public bool deathState = false;
     public Vector3 startPos = new Vector3(0f, -0.38f, 6.28f);
     public Vector3 fakeDeathPos = new Vector3(-1000f, -1038f, 1028f);
-    public GameObject explosionObj;
-    private ParticleSystem explosion;
 
     public bool explosionState = false;
 
@@ -92,7 +99,7 @@ public class RunnerGameManager : MonoBehaviour
     {
         //Application.targetFrameRate = 60;
         playerObject = GameObject.Find("RunnerPlayer");
-        explosion = explosionObj.GetComponent<ParticleSystem>();
+       textMesh = instructionObj.GetComponent<TextMeshProUGUI>();
 
 
     }
@@ -100,6 +107,22 @@ public class RunnerGameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
+
+         
+
+        if(initial && Input.GetButtonDown("Jump"))
+        {
+            initial = false;
+        }else if(initial && !deathState)
+        {
+            textMesh.text = "Press Space to Jump";
+        }else if (!initial && !deathState)
+        {
+            textMesh.text = "";
+        }
+        
         if (explosionState)
         {
             RunnerSoundManager.instance.PlayHere(4, death);
@@ -109,7 +132,7 @@ public class RunnerGameManager : MonoBehaviour
 
         if (deathState == true)
         {
-            
+            textMesh.text = "Press Space to Reset";
             playerObject.transform.position = fakeDeathPos;
             
             
