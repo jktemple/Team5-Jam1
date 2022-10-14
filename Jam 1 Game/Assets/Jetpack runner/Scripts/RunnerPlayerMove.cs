@@ -74,7 +74,11 @@ public class RunnerPlayerMove : MonoBehaviour
 
     }
 
+    void OnControllerColliderHit()
+    {
+       
 
+    }
 
 
     // Start is called before the first frame update
@@ -116,7 +120,7 @@ public class RunnerPlayerMove : MonoBehaviour
         if (getJump)
         {
             RunnerSoundManager.instance.StopSoundHere(2, source2);
-
+            //set bool true
             RunnerSoundManager.instance.PlayHere(1, source1);
             animator.SetBool("IsGrounded", false);
             animator.SetBool("IsJetpack", true);
@@ -127,8 +131,11 @@ public class RunnerPlayerMove : MonoBehaviour
         }
         else if (groundedPlayer)
         {
+            //if bool audio, setbool to false,
+
             RunnerSoundManager.instance.StopSoundHere(1, source1);
             RunnerSoundManager.instance.PlayHere(2, source2);
+
             animator.SetTrigger("IsParry");
             animator.SetBool("IsJetpack", false);
             animator.SetBool("IsGrounded", true);
