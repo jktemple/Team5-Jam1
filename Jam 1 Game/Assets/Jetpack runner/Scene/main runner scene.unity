@@ -6678,7 +6678,7 @@ MonoBehaviour:
   foodCollected: 0
   maxFood: 6
   foodObjects: []
-  foodOffset: {x: 60, y: 60, z: 0}
+  foodOffset: {x: 60, y: -60, z: 0}
   sideOffset: 60
   noFood: {fileID: 2800000, guid: 0b01aa01ac2917f459ca30246d547b4c, type: 3}
   gotFood: {fileID: 2800000, guid: 17224fc4783b2a649bd73e5f6f297c6e, type: 3}
