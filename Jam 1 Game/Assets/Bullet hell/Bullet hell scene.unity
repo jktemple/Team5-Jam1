@@ -1006,7 +1006,7 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
   - name: Plant Hit
-    clip: {fileID: 8300000, guid: 22426053a49fea249b20a8b1909d4cc4, type: 3}
+    clip: {fileID: 8300000, guid: 921aea7066566924e890d5fa71367e1a, type: 3}
     volume: 0.508
     pitch: 1
     source: {fileID: 0}
