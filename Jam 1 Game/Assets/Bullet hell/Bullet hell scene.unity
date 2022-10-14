@@ -1020,6 +1020,11 @@ MonoBehaviour:
     volume: 0.238
     pitch: 1
     source: {fileID: 0}
+  - name: Player Hit
+    clip: {fileID: 8300000, guid: 60eee3e2e4365344f853b7b1474b60a1, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
 --- !u!4 &916631862
 Transform:
   m_ObjectHideFlags: 0

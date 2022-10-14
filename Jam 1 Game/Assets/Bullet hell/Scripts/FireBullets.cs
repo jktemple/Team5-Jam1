@@ -33,7 +33,7 @@ public class FireBullets : MonoBehaviour
     {
         float angleStep = (endAngle-startAngle)/bulletsAmount;
         float angle = startAngle;
-        Vector3 spawnChange = new Vector3(0,Random.Range(-1.0f, 1.0f),0);
+        Vector3 spawnChange = new Vector3(0,Random.Range(-0.5f, 0.5f),0);
         for(int i = 0; i < bulletsAmount; i++){
             float bulDirX = transform.position.x + Mathf.Sin((angle*Mathf.PI)/180);
             float bulDirY = transform.position.y + Mathf.Cos((angle*Mathf.PI)/180);
