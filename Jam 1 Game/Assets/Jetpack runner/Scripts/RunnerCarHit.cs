@@ -46,8 +46,12 @@ public class RunnerCarHit : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
-        RunnerSoundManager.instance.PlayGlobal(carType+2, 1);
+        if (collision.gameObject.tag == "Player")
+        {
+            RunnerSoundManager.instance.PlayGlobal(carType + 2, 1);
+
+        }
     }
 }
