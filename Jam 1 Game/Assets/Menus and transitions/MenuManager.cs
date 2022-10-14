@@ -15,12 +15,17 @@ public class MenuManager : MonoBehaviour
 
     void Start()
     {
+        PlayerPrefs.SetFloat("respawnX", -1);
+        PlayerPrefs.SetFloat("respawnY", -1);
+        PlayerPrefs.SetFloat("respawnZ", -1);
+
         PlayerPrefs.SetInt("level", 0);
     }
 
     public void PlayCutscene1()
     {
         videoTexture.SetActive(true);
+        player.gameObject.SetActive(true);
         player.Play();
         player.loopPointReached += StartGame;
         //wait 9.5 seconds
