@@ -5,6 +5,8 @@ using  UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
+
+    public Fadeout fader;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,6 @@ public class UIController : MonoBehaviour
     }
 
     public void nextScene(){
-         SceneManager.LoadScene("Bullet hell scene");
+         fader.FadeToLevel("Bullet hell scene");
     }
 }
