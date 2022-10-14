@@ -106,7 +106,7 @@ public class Door : MonoBehaviour
     }
 
     private void OnTriggerExit(Collider other) {
-        print("left: " + other.gameObject.name);
+        //print("left: " + other.gameObject.name);
         if (controllerLayers.Contains(other.gameObject.layer) && !closed) {
             Close();
         }

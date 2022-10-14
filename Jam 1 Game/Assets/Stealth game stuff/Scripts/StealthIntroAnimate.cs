@@ -7,6 +7,7 @@ public class StealthIntroAnimate : MonoBehaviour
     public float speed;
     public float distance;
     Vector3 destination;
+    public float threshold;
     void Start()
     {
         destination = transform.position + transform.forward * distance;
@@ -16,6 +17,11 @@ public class StealthIntroAnimate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (transform.position.x >= threshold) { 
+            enabled = false;
+            GetComponent<StealthPlayerController>().enabled = true;
+            StealthGameManager.instance.brightLight.SetActive(false);
+        }
         if (StealthGameManager.instance.paused) { return; }
 
         SteathAudioManager.instance.PlayHere(0, GetComponent<AudioSource>());

@@ -19,6 +19,7 @@ public class StealthGameManager : MonoBehaviour
     public StealthPlayerController player;
     public bool playerHiding = false;
     public GameObject brightLight;
+    public bool resetCheckpoints;
 
     [Header("key bindings")]
     public KeyCode SneakKey = KeyCode.LeftShift;
@@ -43,14 +44,32 @@ public class StealthGameManager : MonoBehaviour
         instance = this;
     }
 
+    public void MakeCheckpoint(Vector3 pos) {
+        PlayerPrefs.SetFloat("respawnX", pos.x);
+        PlayerPrefs.SetFloat("respawnY", pos.y);
+        PlayerPrefs.SetFloat("respawnZ", pos.z);
+    }
+
     private void Start() {
+
         player = FindObjectOfType<StealthPlayerController>();
+        if (PlayerPrefs.GetFloat("respawnY") > -1) {
+            player.transform.position = new Vector3(PlayerPrefs.GetFloat("respawnX"), PlayerPrefs.GetFloat("respawnY"), PlayerPrefs.GetFloat("respawnZ"));
+        }
+        else {
+            print("x:" + PlayerPrefs.GetFloat("respawnX"));
+        }
+
         HideText(gameObject, true);
         Application.targetFrameRate = 60;
     }
 
     void Update()
     {
+        if (resetCheckpoints) {
+            resetCheckpoints = false;
+            MakeCheckpoint(new Vector3(-1, -1, -1));
+        }
         if (Input.GetKeyDown(KeyCode.Escape)) {
             TogglePause();
         }

@@ -58,7 +58,7 @@ public class StealthGaurdInfo : MonoBehaviour
 
     void Update()
     {
-        if (StealthGameManager.instance.tutorialCompleted) {
+        if (StealthGameManager.instance.tutorialCompleted && tutorial) {
             maxVisibilityDistance = 0;
         }
 
@@ -165,7 +165,7 @@ public class StealthGaurdInfo : MonoBehaviour
 
     void EnableRegularBehavior()
     {
-        print("enabled regular behavior");
+        //print("enabled regular behavior");
 
         if (GetComponent<patrol>() != null) { GetComponent<patrol>().enabled = true; }
         if (GetComponent<StealthStationaryGuard>() != null) { GetComponent<StealthStationaryGuard>().enabled = true; }
@@ -175,7 +175,7 @@ public class StealthGaurdInfo : MonoBehaviour
     //called to return guard to normal behavior. without certain components, it's called automatically after suspicionTime seconds. if those components are present, it's instead called from those scripts. example: stealthInevestigate.cs
     public void EndSuspicion(bool calledFromComponent = false) {
         
-        print("suspicion ended!");
+        //print("suspicion ended!");
         
         StealthGameManager.instance.susGaurds.Remove(gameObject);
         if (!suspicious || (!calledFromComponent && investigateComponent != null)) {
