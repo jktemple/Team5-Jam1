@@ -22,6 +22,8 @@ public class RunnerFoodManager : MonoBehaviour
 
     void OnTriggerEnter()
     {
+        RunnerSoundManager.instance.StopSoundHere(3, source);
+
         Destroy(gameObject);
         print("food collected");
         RunnerGameManager.instance.foodCollected += 1;

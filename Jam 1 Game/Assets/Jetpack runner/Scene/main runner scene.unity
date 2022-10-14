@@ -6676,7 +6676,7 @@ MonoBehaviour:
   canvas: {fileID: 1765457353}
   foodUI: {fileID: 1737890539}
   foodCollected: 0
-  maxFood: 6
+  maxFood: 8
   foodObjects: []
   foodOffset: {x: 60, y: -60, z: 0}
   sideOffset: 60
