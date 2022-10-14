@@ -1,5 +1,5 @@
 using System;
-using System.Collections;
+
 using UnityEngine;
 
 public class RunnerPlayerMove : MonoBehaviour
@@ -26,9 +26,19 @@ public class RunnerPlayerMove : MonoBehaviour
 
     public AudioSource source2;
 
+    //particles
+
+    public GameObject jetpackObj;
+    private ParticleSystem jetpack;
+    public GameObject explosionObj;
+    private ParticleSystem explosion;
+    public GameObject skateboardObj;
+    private ParticleSystem skateboard;
+
     //the vectors are simply added together to find the new vector for change
     public Animator animator;
 
+    private bool parry = false;
 
     //I give the functions a jetpack acceleration, a gravitational acceleration, and a terminal velocity and a player input -> new vector at a capped magnitude
     //eventually I think I want to input a jerk to the acceleration, or edit the movement speed a public bezier curve
@@ -74,18 +84,15 @@ public class RunnerPlayerMove : MonoBehaviour
 
     }
 
-    void OnControllerColliderHit()
-    {
-       
-
-    }
-
 
     // Start is called before the first frame update
     void Start()
     {
         controller = gameObject.GetComponent<CharacterController>();
-        animator = gameObject.GetComponent<Animator>(); 
+        animator = gameObject.GetComponent<Animator>();
+        explosion = explosionObj.GetComponent<ParticleSystem>();
+        skateboard = skateboardObj.GetComponent<ParticleSystem>();
+        jetpack = jetpackObj.GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -93,13 +100,14 @@ public class RunnerPlayerMove : MonoBehaviour
     {
         getJump = Input.GetButton("Jump");
         groundedPlayer = controller.isGrounded;
-        // int groundHash = playerAnimator.StringToHash("isGrounded");
-        // int jetpackHash = playerAnimator.StringToHash("isJetpack");
-        //  int parryHash = playerAnimator.StringToHash("isParry");
-
+       
         playerPos = transform.position;
 
-        int parry;
+        if (RunnerGameManager.instance.explosionState)
+        {
+            explosionObj.transform.position = playerPos;
+            explosion.Play();
+        }
 
         if (getJump && groundedPlayer)
         {
@@ -112,20 +120,20 @@ public class RunnerPlayerMove : MonoBehaviour
         if (!getJump)
         {
             RunnerSoundManager.instance.StopSoundHere(1, source1);
-
+            jetpack.Stop();
 
 
         }
 
         if (getJump)
         {
+            jetpack.Play();
             RunnerSoundManager.instance.StopSoundHere(2, source2);
             //set bool true
             RunnerSoundManager.instance.PlayHere(1, source1);
             animator.SetBool("IsGrounded", false);
             animator.SetBool("IsJetpack", true);
-            
-
+            parry = true;
 
 
         }
@@ -134,7 +142,14 @@ public class RunnerPlayerMove : MonoBehaviour
             //if bool audio, setbool to false,
 
             RunnerSoundManager.instance.StopSoundHere(1, source1);
-            RunnerSoundManager.instance.PlayHere(2, source2);
+
+            if (parry)
+            {
+               RunnerSoundManager.instance.PlayHere(2, source2);
+               skateboard.Play();
+               parry = false;
+            }
+           
 
             animator.SetTrigger("IsParry");
             animator.SetBool("IsJetpack", false);

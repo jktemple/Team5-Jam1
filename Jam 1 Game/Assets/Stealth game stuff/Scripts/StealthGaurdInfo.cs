@@ -53,10 +53,6 @@ public class StealthGaurdInfo : MonoBehaviour
     {
         player = FindObjectOfType<StealthPlayerController>().gameObject;
         susCoutner = suspicionTime;
-
-        if (GetComponent<AudioSource>() == null) {
-            gameObject.AddComponent<AudioSource>();
-        }
     }
 
 
@@ -124,7 +120,7 @@ public class StealthGaurdInfo : MonoBehaviour
 
     void Alert() {
         foundPlayer = true;
-        SteathAudioManager.instance.PlayHere(8, GetComponent<AudioSource>(), volume: 1f, restart:true);
+        
         EndSuspicion();
         plumbob.GetComponent<MeshRenderer>().material = red;
 
@@ -147,8 +143,6 @@ public class StealthGaurdInfo : MonoBehaviour
 
     public void BecomeSuspicious(Vector3 pointOfInterest, float _forgetTime = -1) {
         if (foundPlayer) { return; }
-       
-        SteathAudioManager.instance.PlayHere(8, GetComponent<AudioSource>(), volume: 0.5f);
 
         if (!StealthGameManager.instance.susGaurds.Contains(gameObject)) { StealthGameManager.instance.susGaurds.Add(gameObject); }
         plumbob.GetComponent<MeshRenderer>().material = yellow;

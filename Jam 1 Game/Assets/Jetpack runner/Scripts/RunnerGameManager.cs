@@ -17,6 +17,9 @@ public class RunnerGameManager : MonoBehaviour
     List<GameObject> foodUIs = new List<GameObject>();
 
     public float foodOffset = 0f;
+
+    public AudioSource death;
+    
     //foodUIWidth = Canvas width/3
     //foodUIHeight = Canvas height/6
 
@@ -39,7 +42,10 @@ public class RunnerGameManager : MonoBehaviour
     public bool deathState = false;
     public Vector3 startPos = new Vector3(0f, -0.38f, 6.28f);
     public Vector3 fakeDeathPos = new Vector3(-1000f, -1038f, 1028f);
+    public GameObject explosionObj;
+    private ParticleSystem explosion;
 
+    public bool explosionState = false;
 
 
     //Camera data for camera reset on death
@@ -74,7 +80,7 @@ public class RunnerGameManager : MonoBehaviour
     {
         print("death");
         deathState = true;
-        
+        explosionState = true;
         //Destroy();
         //trigger UI
         //add death explosion
@@ -86,6 +92,7 @@ public class RunnerGameManager : MonoBehaviour
     {
         //Application.targetFrameRate = 60;
         playerObject = GameObject.Find("RunnerPlayer");
+        explosion = explosionObj.GetComponent<ParticleSystem>();
 
 
     }
@@ -93,11 +100,20 @@ public class RunnerGameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (explosionState)
+        {
+            RunnerSoundManager.instance.PlayHere(4, death);
+            explosionState = false;
+        }
+
 
         if (deathState == true)
         {
+            
             playerObject.transform.position = fakeDeathPos;
+            
+            
+            
             if (Input.GetButtonDown("Jump"))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

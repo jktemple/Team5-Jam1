@@ -10,7 +10,6 @@ public class MenuManager : MonoBehaviour
     public string transitionSceneName = "Transition Scene";
     public VideoPlayer player;
     public GameObject videoTexture;
-    public GameObject levelSelectMenu;
 
     bool playing;
 
@@ -21,13 +20,6 @@ public class MenuManager : MonoBehaviour
         PlayerPrefs.SetFloat("respawnZ", -1);
 
         PlayerPrefs.SetInt("level", 0);
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            levelSelectMenu.SetActive(false);
-        }
     }
 
     public void PlayCutscene1()
@@ -47,20 +39,17 @@ public class MenuManager : MonoBehaviour
 
     public void PlayLevel1()
     {
-        PlayerPrefs.SetInt("level", 0);
-        SceneManager.LoadScene(transitionSceneName);
+
     }
 
     public void PlayLevel2()
     {
-        PlayerPrefs.SetInt("level", 1);
-        SceneManager.LoadScene(transitionSceneName);
+
     }
 
     public void PlayLevel3()
     {
-        PlayerPrefs.SetInt("level", 2);
-        SceneManager.LoadScene(transitionSceneName);
+
     }
 }
 
