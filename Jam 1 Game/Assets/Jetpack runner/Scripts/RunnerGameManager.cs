@@ -49,6 +49,9 @@ public class RunnerGameManager : MonoBehaviour
     public bool explosionState = false;
 
 
+    public GameObject explosionObj;
+    private ParticleSystem explosion;
+
     //Camera data for camera reset on death
 
     public Vector3 CamPosOffset = new Vector3(0f, 1.2f, -10f);
@@ -105,6 +108,9 @@ public class RunnerGameManager : MonoBehaviour
         playerObject = GameObject.Find("RunnerPlayer");
         textMesh = instructionObj.GetComponent<TextMeshProUGUI>();
 
+        explosion = explosionObj.GetComponent<ParticleSystem>();
+
+
         foodUIs.Add(foodUI);
         for (int i = 0; i < maxFood-1; i++)
         {
@@ -146,6 +152,8 @@ public class RunnerGameManager : MonoBehaviour
         
         if (explosionState)
         {
+            explosionObj.transform.position = playerObject.transform.position;
+            explosion.Play();
             RunnerSoundManager.instance.PlayHere(4, death);
             explosionState = false;
         }

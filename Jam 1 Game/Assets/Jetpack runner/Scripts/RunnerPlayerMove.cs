@@ -103,11 +103,10 @@ public class RunnerPlayerMove : MonoBehaviour
        
         playerPos = transform.position;
 
-        if (RunnerGameManager.instance.explosionState)
-        {
-            explosionObj.transform.position = playerPos;
-            explosion.Play();
-        }
+
+
+
+
 
         if (getJump && groundedPlayer)
         {

@@ -6825,6 +6825,7 @@ MonoBehaviour:
   startPos: {x: 0, y: -0.38, z: 6.28}
   fakeDeathPos: {x: -1000, y: -1038, z: 1028}
   explosionState: 0
+  explosionObj: {fileID: 2105857474}
   CamPosOffset: {x: 0, y: 1.2, z: -10}
   _playerPosOffset: {x: 0, y: 0, z: 0}
 --- !u!4 &498564093
