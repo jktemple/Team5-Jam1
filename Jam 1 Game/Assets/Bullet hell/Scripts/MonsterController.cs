@@ -26,6 +26,11 @@ public class MonsterController : MonoBehaviour
     public void ApplyDamage(float damage){
         health = health - damage;
         Debug.Log("Damage applied: " + health);
+        FindObjectOfType<AudioManager>().Play("Plant Hit");
+    }
+
+    public void Swing(){
+        FindObjectOfType<AudioManager>().Play("Boss Swing");
     }
 
     

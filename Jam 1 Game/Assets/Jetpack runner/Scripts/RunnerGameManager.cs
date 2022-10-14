@@ -39,7 +39,8 @@ public class RunnerGameManager : MonoBehaviour
     public bool deathState = false;
     public Vector3 startPos = new Vector3(0f, -0.38f, 6.28f);
     public Vector3 fakeDeathPos = new Vector3(-1000f, -1038f, 1028f);
-
+    public GameObject explosionObj;
+    private ParticleSystem explosion;
 
 
     //Camera data for camera reset on death
@@ -86,6 +87,7 @@ public class RunnerGameManager : MonoBehaviour
     {
         //Application.targetFrameRate = 60;
         playerObject = GameObject.Find("RunnerPlayer");
+        explosion = explosionObj.GetComponent<ParticleSystem>();
 
 
     }
@@ -97,6 +99,8 @@ public class RunnerGameManager : MonoBehaviour
 
         if (deathState == true)
         {
+            explosionObj.transform.position = _playerPos;
+            explosion.Play();
             playerObject.transform.position = fakeDeathPos;
             if (Input.GetButtonDown("Jump"))
             {

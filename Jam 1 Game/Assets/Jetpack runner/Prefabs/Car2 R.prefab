@@ -105,10 +105,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d4c0f4dc7fe92345ad1458389c52cfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frontOffset: {x: -1.31, y: 1.19, z: 0}
+  frontOffset: {x: -0.75, y: 0.73, z: 0}
   radius: 3
   validLayers: 
-  carType: 2
 --- !u!1 &9184873881461573745
 GameObject:
   m_ObjectHideFlags: 0

@@ -81,6 +81,7 @@ public class BulletHellController : MonoBehaviour
            // Debug.Log("Fire");
             timer = 0;
             Instantiate(bullet, transform.position, Quaternion.identity);
+            FindObjectOfType<AudioManager>().Play("Sword Swing");
         }
         timer += Time.deltaTime;
         //Debug.Log(timer);
@@ -89,6 +90,7 @@ public class BulletHellController : MonoBehaviour
     void takeDamage(float damage){
         if(isShielded){
             shields -= damage;
+            FindObjectOfType<AudioManager>().Play("Sheild Clank");
             Debug.Log("Shields = " + shields);
         } else {
             health -= damage;
