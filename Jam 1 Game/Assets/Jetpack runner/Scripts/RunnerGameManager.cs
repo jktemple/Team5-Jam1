@@ -3,21 +3,35 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
 
 using UnityEngine;
+using System.Collections.Concurrent;
+
 public class RunnerGameManager : MonoBehaviour
 {
     public static RunnerGameManager instance;
     public GameObject playerObject;
 
     public GameObject canvas;
+    private Transform transCanvas;
     public GameObject foodUI;
 
-    public int foodCollected = 0;
-    public int maxFood;
-    List<GameObject> foodUIs = new List<GameObject>();
 
-    public float foodOffset = 0f;
+    public int foodCollected = 0;
+    public int maxFood = 6;
+    List<GameObject> foodUIs = new List<GameObject>();
+    public GameObject[] foodObjects;
+    public Vector3 foodOffset = new Vector3(60, 60, 0);
+    public float sideOffset = 20f;
+    //private Vector3 concurrentOffset = new Vector3(foodOffset);
+    public Texture noFood;
+    public Texture gotFood;
+
+  
+
+
+
 
     public AudioSource death;
     private bool initial = true;
@@ -25,26 +39,6 @@ public class RunnerGameManager : MonoBehaviour
 
     public GameObject instructionObj;
     public TextMeshProUGUI textMesh;
-    /// <summary>
-    /// 
-    /// </summary>
-
-    //foodUIWidth = Canvas width/3
-    //foodUIHeight = Canvas height/6
-
-    //foodUIIncrement = foodImageWidth + _UIoffset
-
-  /*  for (int i = 0; i < maxFood; i++)
-    {
-    
-
-
-
-    }
-
-    */
-
-    //player reset throwaways
 
 
     //player death state
@@ -74,7 +68,15 @@ public class RunnerGameManager : MonoBehaviour
     
     //Class methods
 
+    public void foodUICollect()
+    {
+        int foodElement = foodCollected - 1;
+        GameObject passedObject = foodObjects[foodElement];
+        RawImage passedRaw = passedObject.GetComponent<RawImage>();
 
+        passedRaw.texture = gotFood;
+
+    }
 
     public void PlayerReset()
     {
@@ -98,8 +100,26 @@ public class RunnerGameManager : MonoBehaviour
     void Start()
     {
         //Application.targetFrameRate = 60;
+
+        transCanvas = canvas.GetComponent<Transform>();
         playerObject = GameObject.Find("RunnerPlayer");
-       textMesh = instructionObj.GetComponent<TextMeshProUGUI>();
+        textMesh = instructionObj.GetComponent<TextMeshProUGUI>();
+
+        foodUIs.Add(foodUI);
+        for (int i = 0; i < maxFood-1; i++)
+        {
+            foodOffset.x += sideOffset;
+
+            print("done!");
+            GameObject newInstance = Instantiate(foodUI, transform);
+            newInstance.transform.SetParent(transCanvas, false);
+
+            newInstance.GetComponent<RectTransform>().anchoredPosition3D = foodOffset;
+
+            foodUIs.Add(newInstance);
+
+        }
+        foodObjects = foodUIs.ToArray();
 
 
     }
@@ -108,6 +128,7 @@ public class RunnerGameManager : MonoBehaviour
     void Update()
     {
 
+        
 
 
          

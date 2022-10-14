@@ -5,6 +5,10 @@ using UnityEngine;
 public class RunnerFoodManager : MonoBehaviour
 {
     // Start is called before the first frame update
+
+    public AudioSource source;
+
+
     void Start()
     {
         
@@ -21,6 +25,8 @@ public class RunnerFoodManager : MonoBehaviour
         Destroy(gameObject);
         print("food collected");
         RunnerGameManager.instance.foodCollected += 1;
+        RunnerGameManager.instance.foodUICollect();
+        RunnerSoundManager.instance.PlayHere(3, source);
     
     }
 
