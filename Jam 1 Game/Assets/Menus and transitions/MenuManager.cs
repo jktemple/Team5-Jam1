@@ -36,6 +36,21 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene(transitionSceneName);
     }
+
+    public void PlayLevel1()
+    {
+
+    }
+
+    public void PlayLevel2()
+    {
+
+    }
+
+    public void PlayLevel3()
+    {
+
+    }
 }
 
 

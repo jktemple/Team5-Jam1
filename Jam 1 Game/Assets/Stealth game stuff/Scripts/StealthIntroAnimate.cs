@@ -17,7 +17,11 @@ public class StealthIntroAnimate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.x >= threshold) { enabled = false; }
+        if (transform.position.x >= threshold) { 
+            enabled = false;
+            GetComponent<StealthPlayerController>().enabled = true;
+            StealthGameManager.instance.brightLight.SetActive(false);
+        }
         if (StealthGameManager.instance.paused) { return; }
 
         SteathAudioManager.instance.PlayHere(0, GetComponent<AudioSource>());
