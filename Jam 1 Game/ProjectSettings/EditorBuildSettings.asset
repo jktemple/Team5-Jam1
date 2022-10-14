@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Bullet hell/Bullet hell scene.unity
     guid: b75f54110d78fa040a4a3d16326532dc
+  - enabled: 1
+    path: Assets/Menus and transitions/Picnic scene.unity
+    guid: 1a95d2e4d43658b45af28126e63ac9d6
   m_configObjects: {}
