@@ -23,7 +23,7 @@ public class RunnerGameManager : MonoBehaviour
     List<GameObject> foodUIs = new List<GameObject>();
     public GameObject[] foodObjects;
     public Vector3 foodOffset = new Vector3(60, 60, 0);
-    public float sideOffset = 20f;
+    public float sideOffset = 60f;
     //private Vector3 concurrentOffset = new Vector3(foodOffset);
     public Texture noFood;
     public Texture gotFood;
