@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class StealthIntroAnimate : MonoBehaviour
     public float distance;
     Vector3 destination;
     public float threshold;
+    public GameObject entryText;
     void Start()
     {
         destination = transform.position + transform.forward * distance;
@@ -21,6 +23,7 @@ public class StealthIntroAnimate : MonoBehaviour
             enabled = false;
             GetComponent<StealthPlayerController>().enabled = true;
             StealthGameManager.instance.brightLight.SetActive(false);
+            entryText.SetActive(false);
         }
         if (StealthGameManager.instance.paused) { return; }
 
@@ -30,6 +33,7 @@ public class StealthIntroAnimate : MonoBehaviour
             GetComponent<StealthPlayerController>().enabled = true;
             enabled = false;
             SteathAudioManager.instance.StopSoundHere(0, GetComponent<AudioSource>());
+            entryText.SetActive(false);
         }
     }
 
