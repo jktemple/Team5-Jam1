@@ -10,6 +10,7 @@ public class RunnerCarHit : MonoBehaviour
     public Vector3 frontOffset= new Vector3(0, 0, 0);
     public float radius;
     public List<int> validLayers = new List<int>();
+    [SerializeField] int carType;
 
     // Start is called before the first frame update
     void Start()
@@ -43,5 +44,10 @@ public class RunnerCarHit : MonoBehaviour
 
 
 
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        RunnerSoundManager.instance.PlayGlobal(carType+2, 1);
     }
 }
