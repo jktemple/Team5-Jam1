@@ -32,7 +32,7 @@ public class BulletPool : MonoBehaviour
         }
 
         if(notEnoughBulletsInPool){
-            GameObject bul = Instantiate(pooledBullet);
+            GameObject bul = Instantiate(pooledBullet, transform);
             bul.SetActive(false);
             bullets.Add(bul);
             return bul;
