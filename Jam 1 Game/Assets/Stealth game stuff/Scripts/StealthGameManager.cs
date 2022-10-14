@@ -43,8 +43,17 @@ public class StealthGameManager : MonoBehaviour
         instance = this;
     }
 
+    public void MakeCheckpoint(Vector3 pos) {
+        PlayerPrefs.SetFloat("respawnX", pos.x);
+        PlayerPrefs.SetFloat("respawnY", pos.y);
+        PlayerPrefs.SetFloat("respawnZ", pos.z);
+    }
+
     private void Start() {
         player = FindObjectOfType<StealthPlayerController>();
+        if (PlayerPrefs.GetFloat("respawnX") > -1) {
+            player.transform.position = new Vector3(PlayerPrefs.GetFloat("respawnX"), PlayerPrefs.GetFloat("respawnY"), PlayerPrefs.GetFloat("respawnZ"));
+        }
         HideText(gameObject, true);
         Application.targetFrameRate = 60;
     }

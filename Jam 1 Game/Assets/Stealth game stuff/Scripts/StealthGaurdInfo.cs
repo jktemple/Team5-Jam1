@@ -58,7 +58,7 @@ public class StealthGaurdInfo : MonoBehaviour
 
     void Update()
     {
-        if (StealthGameManager.instance.tutorialCompleted) {
+        if (StealthGameManager.instance.tutorialCompleted && tutorial) {
             maxVisibilityDistance = 0;
         }
 
